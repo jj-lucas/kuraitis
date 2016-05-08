@@ -1818,15 +1818,19 @@ theme.productVariantCallback = function (variant, selector) {
       // Show how many items are left, if below 10
       if (theme.settings.productStockSetting) {
         if (variant.inventory_management) {
-          if (variant.inventory_quantity < 10 && variant.inventory_quantity > 0) {
-            theme.cache.$productStock.html(theme.strings.stockAvailable.replace('1', variant.inventory_quantity)).removeClass('hide');
+          // if (variant.inventory_quantity < 10 && variant.inventory_quantity > 0) {
+          if (variant.inventory_quantity > 0) {
+          	theme.cache.$productStock.html('');
+            //theme.cache.$productStock.html(theme.strings.stockAvailable.replace('1', variant.inventory_quantity)).removeClass('hide');
           } else if (variant.inventory_quantity <= 0 && variant.incoming) {
             theme.cache.$productStock.html(theme.strings.willNotShipUntil.replace('[date]', variant.next_incoming_date)).removeClass('hide');
           } else {
+            // theme.cache.$productStock.addClass('hide');
             theme.cache.$productStock.html('Currently out of stock, allow up to 10 days for shipping');
           }
         } else {
-            theme.cache.$productStock.addClass('hide');
+            // theme.cache.$productStock.addClass('hide');
+            theme.cache.$productStock.html('Currently out of stock, allow up to 10 days for shipping');
         }
       }
     } else {
