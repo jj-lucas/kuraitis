@@ -1826,11 +1826,11 @@ theme.productVariantCallback = function (variant, selector) {
             theme.cache.$productStock.html(theme.strings.willNotShipUntil.replace('[date]', variant.next_incoming_date)).removeClass('hide');
           } else {
             // theme.cache.$productStock.addClass('hide');
-            theme.cache.$productStock.html('Currently out of stock, allow up to 10 days for shipping');
+            theme.cache.$productStock.html('Made-to-order, allow up to 10 days for shipping');
           }
         } else {
             // theme.cache.$productStock.addClass('hide');
-            theme.cache.$productStock.html('Currently out of stock, allow up to 10 days for shipping');
+            theme.cache.$productStock.html('Made-to-order, allow up to 10 days for shipping');
         }
       }
     } else {
