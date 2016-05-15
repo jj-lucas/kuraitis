@@ -23,7 +23,9 @@
 
   {% include 'social-meta-tags' %}
 
-  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'theme.scss.css' | | asset_url | stylesheet_tag }}
+
+  {{ 'kuraitis.scss.css' | | asset_url | stylesheet_tag }} 
   {% include 'google-fonts' %}
 
   {{ content_for_header }}
@@ -277,7 +279,7 @@
       </div>
     {% endif %}
 
-    <main class="main-content {% if settings.hero_enable and template == 'index' %} main-content--flush{% endif %}" id="MainContent" role="main">
+    <main class="main-content {% if settings.hero_enable and template == 'index' %} main-content--flush{% endif %} kuraitis" id="MainContent" role="main">
       <div class="page-width">
         {{ content_for_layout }}
       </div>
