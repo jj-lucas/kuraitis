@@ -134,6 +134,9 @@
   </div>
 </div>
 
+
+{% include 'related-products' %}
+
 {% comment %}
   If we came from a collection, close .page-width to
   have a full-width back button area.
@@ -159,3 +162,4 @@
     unavailable: {{ 'products.product.unavailable' | t | json }}
   }
 </script>
+

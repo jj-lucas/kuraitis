@@ -25,7 +25,7 @@
       "signup_form_email_placeholder": "Seu e-mail",
       "signup_form_submit": "Enviar",
       "signup_form_success": "Nós lhe enviaremos um e-mail logo antes de abrirmos!",
-      "admin_link_html": "Você é o dono da loja? <a href=\"/admin\" class=\"text-link\">Faça login aqui</a>",
+      "admin_link_html": "Você é o dono da loja? <a href=\"\/admin\" class=\"text-link\">Faça login aqui<\/a>",
       "password_link": "Entre usando a senha",
       "powered_by_shopify_html": "Esta loja será patrocinada por {{ shopify }}"
     },
@@ -49,8 +49,8 @@
       "submit": "Buscar",
       "read_more": "Ler mais",
       "results_count_html": {
-        "one": "{{ count }} resultado para <strong>{{ terms }}</strong>",
-        "other": "{{ count }} resultados para <strong>{{ terms }}</strong>"
+        "one": "{{ count }} resultado para <strong>{{ terms }}<\/strong>",
+        "other": "{{ count }} resultados para <strong>{{ terms }}<\/strong>"
       },
       "products": "Produtos",
       "pages_and_articles": "Páginas e artigos"
@@ -251,9 +251,9 @@
     },
     "onboarding": {
       "modal_title": "Quase lá...",
-      "no_featured_products_html": "Crie ou selecione suas <a href=\"/admin/collections\"> coleções personalizadas</a> em configurações de tema para apresentar produtos em destaque aqui.",
+      "no_featured_products_html": "Crie ou selecione suas <a href=\"\/admin\/collections\"> coleções personalizadas<\/a> em configurações de tema para apresentar produtos em destaque aqui.",
       "product_title": "Exemplo de título de produto",
-      "no_collections_html": "Definir até seis coleções em destaque nas configurações de tema para exibi-las aqui. Você não tem coleções para exibir aqui. <a href=\"/admin/collections\">Adicione algumas coleções</a> para acompanhar a \"Primeira Página\" padrão.",
+      "no_collections_html": "Definir até seis coleções em destaque nas configurações de tema para exibi-las aqui. Você não tem coleções para exibir aqui. <a href=\"\/admin\/collections\">Adicione algumas coleções<\/a> para acompanhar a \"Primeira Página\" padrão.",
       "add_collection": "Adicionar uma coleção",
       "collection_title": "Exemplo de título"
     }
@@ -271,7 +271,8 @@
       "featured_products": "Produtos em destaque"
     },
     "footer": {
-      "social_platform": "{{ name }} em {{ platform }}"
+      "social_platform": "{{ name }} em {{ platform }}",
+      "footer_line": "CVR: 32220649 | Ulleruphusevej 12, 7900 Nykøbing Mors  | Tlf.: 60608617 | sergio@kuraitis.dk"
     }
   },
   "products": {
@@ -290,7 +291,7 @@
       "view": "Ver produto",
       "stock_available": "Restam apenas {{ count }}",
       "collection_return": "Voltar à {{ collection }}",
-      "product_added_to_cart_html": "Item adicionado ao carrinho. <span>Ver carrinho e fechar pedido</span>.",
+      "product_added_to_cart_html": "Item adicionado ao carrinho. <span>Ver carrinho e fechar pedido<\/span>.",
       "stock_unavailable": "O item não pôde ser adicionado a seu carrinho porque não há suficiente em estoque."
     }
   },
@@ -308,7 +309,7 @@
       "add_to_apple_wallet": "Adicionar ao Apple Wallet"
     }
   },
-  "date_formats":{
+  "date_formats": {
     "month_day_year": "%d de %B de %Y"
   }
 }

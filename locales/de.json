@@ -25,7 +25,7 @@
       "signup_form_email_placeholder": "Ihre E-Mail-Adresse",
       "signup_form_submit": "Abschicken",
       "signup_form_success": "Wir senden Ihnen eine E-Mail, kurz bevor wir eröffnen!",
-      "admin_link_html": "Sind Sie der Geschäftsinhaber? <a href=\"/admin\" class=\"text-link\">Melden Sie sich hier an</a>",
+      "admin_link_html": "Sind Sie der Geschäftsinhaber? <a href=\"\/admin\" class=\"text-link\">Melden Sie sich hier an<\/a>",
       "password_link": "Mit Passwort betreten",
       "powered_by_shopify_html": "Dieser Shop wird mit Hilfe von {{ shopify }} betrieben werden"
     },
@@ -49,8 +49,8 @@
       "submit": "Suchen",
       "read_more": "Weiterlesen",
       "results_count_html": {
-        "one": "{{ count }} ergebnis für <strong>{{ terms }}</strong>",
-        "other": "{{ count }} ergebnisse für <strong>{{ terms }}</strong>"
+        "one": "{{ count }} ergebnis für <strong>{{ terms }}<\/strong>",
+        "other": "{{ count }} ergebnisse für <strong>{{ terms }}<\/strong>"
       },
       "products": "Produkte",
       "pages_and_articles": "Seiten und Artikel"
@@ -251,9 +251,9 @@
     },
     "onboarding": {
       "modal_title": "Fast fertig...",
-      "no_featured_products_html": "Erstellen oder wählen Sie Ihre <a href=\"/admin/collections\">benutzerdefinierten Sammlungen</a> in Themensetting, um vorgestellte Produkte hier zu präsentieren.",
+      "no_featured_products_html": "Erstellen oder wählen Sie Ihre <a href=\"\/admin\/collections\">benutzerdefinierten Sammlungen<\/a> in Themensetting, um vorgestellte Produkte hier zu präsentieren.",
       "product_title": "Beispielhafter Produkttitel",
-      "no_collections_html": "Wählen Sie in den Einstellungen bis zu 6 Kollektionen, die hier angezeigt werden sollen. Sie haben hier keine Zusammenstellungen zum Anzeigen. <a href=\"/admin/collections\">Fügen Sie ein paar Zusammenstellungen</a> zur Standard-Startseite hinzu.",
+      "no_collections_html": "Wählen Sie in den Einstellungen bis zu 6 Kollektionen, die hier angezeigt werden sollen. Sie haben hier keine Zusammenstellungen zum Anzeigen. <a href=\"\/admin\/collections\">Fügen Sie ein paar Zusammenstellungen<\/a> zur Standard-Startseite hinzu.",
       "add_collection": "Fügen Sie eine Sammlung",
       "collection_title": "Beispielhafter Zusammenstellungstitel"
     }
@@ -271,7 +271,8 @@
       "featured_products": "Ausgewählte Artikel"
     },
     "footer": {
-      "social_platform": "{{ name }} auf {{ platform }}"
+      "social_platform": "{{ name }} auf {{ platform }}",
+      "footer_line": "CVR: 32220649 | Ulleruphusevej 12, 7900 Nykøbing Mors  | Tlf.: 60608617 | sergio@kuraitis.dk"
     }
   },
   "products": {
@@ -290,7 +291,7 @@
       "view": "Ansicht",
       "stock_available": "{{ count }} übrig",
       "collection_return": "Zurück zur {{ collection }}",
-      "product_added_to_cart_html": "Artikel wurde in den Einkaufswagen gelegt. <span>Sehen Sie sich Ihren Einkaufswagen an und gehen Sie zur Kasse</span>.",
+      "product_added_to_cart_html": "Artikel wurde in den Einkaufswagen gelegt. <span>Sehen Sie sich Ihren Einkaufswagen an und gehen Sie zur Kasse<\/span>.",
       "stock_unavailable": "Der Artikel konnte nicht in Ihren Warenkorb gelegt werden, da nicht genug Einheiten auf Lager sind."
     }
   },
@@ -308,7 +309,7 @@
       "add_to_apple_wallet": "Hinzufügen zu Apple Wallet"
     }
   },
-  "date_formats":{
+  "date_formats": {
     "month_day_year": "%B %d, %Y"
   }
 }
