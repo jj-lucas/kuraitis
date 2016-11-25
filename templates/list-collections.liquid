@@ -15,11 +15,11 @@
         </div>
       </a>
     </div>
-    {% for product in collection.products limit: 4 %}
+    {% for product in collection.products limit: 9 %}
       {% comment %}
         Hide the last product for a better mobile view
       {% endcomment %}
-      <div class="grid__item small--one-half medium-up--one-fifth{% if forloop.index == 4 %} small--hide{% endif %}">
+      <div class="grid__item small--one-half medium-up--one-fifth{% if forloop.index == 9 %} small--hide{% endif %}">
         {% include 'product-card', product: product %}
       </div>
     {% endfor %}
