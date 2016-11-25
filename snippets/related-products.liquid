@@ -2,11 +2,10 @@
 <!-- See this: http://wiki.shopify.com/Related_Products -->
 
 {% assign image_size = 'compact' %}
-{% assign heading = 'You might also like '%}
 
 {% if product.tags.size > 0 %}
 <div class="related-products {{ image_size }}">
-  <h3>{{ heading }}</h3>
+  <h3>{{ 'layout.recommendations.you_might_also_like' | t }}</h3>
   <ul></ul>
 
   <script>!window.jQuery && document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"><\/script>')</script>

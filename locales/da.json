@@ -267,6 +267,9 @@
       "log_out": "Log out",
       "create_account": "Create account"
     },
+    "recommendations": {
+      "you_might_also_like": "YOU MIGHT ALSO LIKE"
+    },
     "sidebar": {
       "featured_products": "Featured Products"
     },
