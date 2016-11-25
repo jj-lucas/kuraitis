@@ -281,6 +281,7 @@
   "products": {
     "product": {
       "sold_out": "Sold Out",
+      "made_to_order": "Made-to-order, allow up to 10 days for shipping",
       "unavailable": "Unavailable",
       "will_not_ship_until": "Will not ship until {{ date }}",
       "will_be_in_stock_after": "Will be in stock after {{ date }}",
