@@ -1,4 +1,5 @@
-{% for collection in collections %}
+{% for link in linklists.all-collections.links %}
+{% assign collection = link.object %}
   {% unless collection.handle == 'frontpage' %}
 
   <div class="grid grid--no-gutters grid--uniform collection">
