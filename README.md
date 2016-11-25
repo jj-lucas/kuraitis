@@ -1,7 +1,7 @@
 # Kuraitis.dk Shopify theme
 
 ### Local development setup
-- Install the Theme Kit tool following the steps of http://themekit.cat/install/
+- Install the Theme Kit tool following the steps of https://shopify.github.io/themekit/#installation
 - Clone the repo
 - Create a private app in Shopify
 - Add a file called ```config.yml``` with the following info https://gist.github.com/jj-lucas/74dd7a8bf8405ba467f9db12cb88f296
