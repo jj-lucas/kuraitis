@@ -268,7 +268,7 @@
       "create_account": "Create account"
     },
     "recommendations": {
-      "you_might_also_like": "YOU MIGHT ALSO LIKE"
+      "you_might_also_like": "DU SYNES MÅSKE OGSÅ OM"
     },
     "sidebar": {
       "featured_products": "Featured Products"
@@ -281,7 +281,7 @@
   "products": {
     "product": {
       "sold_out": "Udsolgt",
-      "made_to_order": "Made-to-order, allow up to 10 days for shipping",
+      "made_to_order": "Fremstilles på bestilling. Forsendelsen kan tage 10 dage.",
       "unavailable": "Ikke tilgængelig",
       "will_not_ship_until": "Kan ikke sendes før {{ date }}",
       "will_be_in_stock_after": "Vil være på lager efter {{ date }}",
