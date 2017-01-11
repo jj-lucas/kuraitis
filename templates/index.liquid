@@ -1,4 +1,4 @@
-{% if settings.hero_enable %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% if settings.hero_enable %}
   {% comment %}
     Close .page-width wrapper div
   {% endcomment %}
@@ -7,11 +7,11 @@
     <button type="button" class="visually-hidden hero__pause" aria-live="polite">
       <span class="hero__pause-stop">
         {% include 'icon-pause' %}
-        <span class="icon__fallback-text">{{ 'homepage.hero.pause_slideshow' | t }}</span>
+        <span class="icon__fallback-text">{% comment %}ly_i18n_replace_for_[ 'homepage.hero.pause_slideshow' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'homepage.hero.pause_slideshow' | t }}{% endcapture %}{% include 'ly-static-string' with '3335112' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
       </span>
       <span class="hero__pause-play">
         {% include 'icon-play' %}
-        <span class="icon__fallback-text">{{ 'homepage.hero.play_slideshow' | t }}</span>
+        <span class="icon__fallback-text">{% comment %}ly_i18n_replace_for_[ 'homepage.hero.play_slideshow' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'homepage.hero.play_slideshow' | t }}{% endcapture %}{% include 'ly-static-string' with '3335113' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
       </span>
     </button>
     <div class="hero" id="Hero" data-autoplay="true" data-speed="7000">
@@ -42,7 +42,7 @@
               }
             </style>
 
-            <div class="hero__image hero__image--{{ i }}" data-image="{{ slide_img | asset_url }}"></div>
+            <div class="hero__image hero__image--{{ i }}" data-image="{% comment %}ly_asset_replace_for_[ slide_img | asset_url ]_begin{% endcomment %}{% assign ly_asset = slide_img %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}"></div>
             <div class="hero__text-wrap">
               <div class="page-width">
                 <div class="hero__text-content">
@@ -62,11 +62,11 @@
                   <div class="hero__arrows small--hide" aria-controls="Hero">
                     <a href="#" class="hero__arrow hero__arrow--prev">
                       {% include 'icon-arrow-left' %}
-                      <span class="icon__fallback-text">{{ 'homepage.hero.previous_slide' | t }}</span>
+                      <span class="icon__fallback-text">{% comment %}ly_i18n_replace_for_[ 'homepage.hero.previous_slide' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'homepage.hero.previous_slide' | t }}{% endcapture %}{% include 'ly-static-string' with '3335114' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
                     </a>
                     <a href="#" class="hero__arrow hero__arrow--next">
                       {% include 'icon-arrow-right' %}
-                      <span class="icon__fallback-text">{{ 'homepage.hero.next_slide' | t }}</span>
+                      <span class="icon__fallback-text">{% comment %}ly_i18n_replace_for_[ 'homepage.hero.next_slide' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'homepage.hero.next_slide' | t }}{% endcapture %}{% include 'ly-static-string' with '3335115' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
                     </a>
                   </div>
 
@@ -108,16 +108,16 @@
       {% if linklists[child_list_handle].links != blank %}
         <li class="drawer__nav-item">
           <div class="drawer__nav-has-sublist">
-            <a href="{{ link.url }}" class="drawer__nav-link" id="DrawerLabel-{{ child_list_handle }}">{{ link.title }}</a>
+            <a href="{{ link.url }}" class="drawer__nav-link" id="DrawerLabel-{{ child_list_handle }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
               <div class="drawer__nav-toggle">
                 <button type="button" data-aria-controls="IndexLinklist-{{ child_list_handle }}" class="text-link drawer__nav-toggle-btn index__meganav-toggle{% if meganav_index == 1 %} meganav--active{% endif %}" {% if meganav_index == 1 %} aria-expanded="true"{% endif %}>
                   <span class="drawer__nav-toggle--open">
                     {% include 'icon-plus' %}
-                    <span class="icon__fallback-text">{{ 'general.drawers.expand_sub_menu' | t }}</span>
+                    <span class="icon__fallback-text">{% comment %}ly_i18n_replace_for_[ 'general.drawers.expand_sub_menu' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.drawers.expand_sub_menu' | t }}{% endcapture %}{% include 'ly-static-string' with '3335116' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
                   </span>
                   <span class="drawer__nav-toggle--close">
                     {% include 'icon-minus' %}
-                    <span class="icon__fallback-text">{{ 'general.drawers.collapse_sub_menu' | t }}</span>
+                    <span class="icon__fallback-text">{% comment %}ly_i18n_replace_for_[ 'general.drawers.collapse_sub_menu' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.drawers.collapse_sub_menu' | t }}{% endcapture %}{% include 'ly-static-string' with '3335117' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
                   </span>
                 </button>
               </div>
@@ -131,7 +131,7 @@
         </li>
       {% else %}
         <li class="drawer__nav-item">
-          <a href="{{ link.url }}" class="drawer__nav-link">{{ link.title }}</a>
+          <a href="{{ link.url }}" class="drawer__nav-link">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
         </li>
       {% endif %}
     {% endfor %}
@@ -180,10 +180,10 @@
               {% assign featured_collection_grid_width = 'one-half' %}
             {% endif %}
             <div class="grid__item {{ featured_collection_grid_width }}">
-              <a href="{{ featured_collection.url }}" title="{{ 'collections.general.link_title' | t: title: featured_collection.title }}" class="featured-card{% if settings.home_featured_cover_image_enable %} featured-card--cover{% endif %}"{% if settings.home_featured_cover_image_enable %} style="background-image: url('{{ featured_card_image_src | img_url: 'large' }}')"{% endif %}>
+              <a href="{{ featured_collection.url }}" title="{% comment %}ly_i18n_replace_for_[ 'collections.general.link_title' | t: title: featured_collection.title ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.link_title' | t: title: featured_collection.title }}{% endcapture %}{% include 'ly-static-string' with '3335119' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% include 'ly-title' with featured_collection %}{% assign replacement = ly_translation %}{% assign ly_template = ly_template | replace: '[[title]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" class="featured-card{% if settings.home_featured_cover_image_enable %} featured-card--cover{% endif %}"{% if settings.home_featured_cover_image_enable %} style="background-image: url('{{ featured_card_image_src | img_url: 'large' }}')"{% endif %}>
                 <div class="featured-card__header">
-                  <p class="h1 featured-card__title">{{ featured_collection.title }}</p>
-                  <span class="featured-card__action">{{ 'collections.general.view_all' | t }}</span>
+                  <p class="h1 featured-card__title">{% comment %}ly_code_replace_for_[ featured_collection.title ]_begin{% endcomment %}{% include 'ly-title' with featured_collection %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</p>
+                  <span class="featured-card__action">{% comment %}ly_i18n_replace_for_[ 'collections.general.view_all' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.view_all' | t }}{% endcapture %}{% include 'ly-static-string' with '3335120' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
                 </div>
                 {% unless settings.home_featured_cover_image_enable %}
                   <div class="featured-card__image-wrapper">
@@ -206,9 +206,9 @@
       <div class="helper-section">
         <div class="helper-note">
           <span class="helper-icon"></span>
-          <h3>{{ 'homepage.onboarding.modal_title' | t }}</h3>
-          <p>{{ 'homepage.onboarding.no_collections_html' | t }}</p>
-          <p><a href="/admin/collections" class="admin-btn-primary">{{ 'homepage.onboarding.add_collection' | t }}</a></p>
+          <h3>{% comment %}ly_i18n_replace_for_[ 'homepage.onboarding.modal_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'homepage.onboarding.modal_title' | t }}{% endcapture %}{% include 'ly-static-string' with '3335121' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h3>
+          <p>{% comment %}ly_i18n_replace_for_[ 'homepage.onboarding.no_collections_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'homepage.onboarding.no_collections_html' | t }}{% endcapture %}{% include 'ly-static-string' with '3335122' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
+          <p><a href="/admin/collections" class="admin-btn-primary">{% comment %}ly_i18n_replace_for_[ 'homepage.onboarding.add_collection' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'homepage.onboarding.add_collection' | t }}{% endcapture %}{% include 'ly-static-string' with '3335123' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a></p>
         </div>
         <div class="grid grid--no-gutters helper-content">
           {% for i in (1..3) %}
@@ -216,8 +216,8 @@
             <div class="grid__item one-third">
               <a href="/collections" class="featured-card{% if settings.home_featured_cover_image_enable %} featured-card--cover{% endif %}"{% if settings.home_featured_cover_image_enable %} style="background-image: url('{{ imageUrl }}')"{% endif %}>
                 <div class="featured-card__header">
-                  <p class="h1 featured-card__title">{{ 'homepage.onboarding.collection_title' | t }}</p>
-                  <span class="featured-card__action">{{ 'collections.general.view_all' | t }}</span>
+                  <p class="h1 featured-card__title">{% comment %}ly_i18n_replace_for_[ 'homepage.onboarding.collection_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'homepage.onboarding.collection_title' | t }}{% endcapture %}{% include 'ly-static-string' with '3335124' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
+                  <span class="featured-card__action">{% comment %}ly_i18n_replace_for_[ 'collections.general.view_all' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.view_all' | t }}{% endcapture %}{% include 'ly-static-string' with '3335120' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
                 </div>
                 {% unless settings.home_featured_cover_image_enable %}
                   <div class="featured-card__image-wrapper">
@@ -237,7 +237,7 @@
   <div class="grid index-section index-section--page-content text-center">
     <div class="grid__item medium-up--three-fifths medium-up--push-one-fifth">
       <div class="rte">
-        {{ pages[settings.home_page_content].content }}
+        {% comment %}ly_code_replace_for_[ pages[settings.home_page_content].content ]_begin{% endcomment %}{% include 'ly-content' with pages[settings.home_page_content] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
       </div>
     </div>
   </div>
@@ -276,8 +276,8 @@
             {% endif %}
             <a href="{{ collection_object.url }}" class="collection-card" style="background-image: url({{ collection_image }});">
               <div class="collection-card__meta">
-                <p class="h1 collection-card__title">{{ collection_object.title }}</p>
-                <p class="collection-card__subtext">{{ 'collections.general.view_all' | t }}</p>
+                <p class="h1 collection-card__title">{% comment %}ly_code_replace_for_[ collection_object.title ]_begin{% endcomment %}{% include 'ly-title' with collection_object %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</p>
+                <p class="collection-card__subtext">{% comment %}ly_i18n_replace_for_[ 'collections.general.view_all' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.view_all' | t }}{% endcapture %}{% include 'ly-static-string' with '3335120' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
               </div>
             </a>
           </div>
@@ -301,16 +301,16 @@
       <div class="helper-section">
         <div class="helper-note">
           <span class="helper-icon"></span>
-          <h3>{{ 'homepage.onboarding.modal_title' | t }}</h3>
-          <p>{{ 'homepage.onboarding.no_featured_products_html' | t }}</p>
-          <p><a href="/admin/collections/new" class="admin-btn-primary">{{ 'homepage.onboarding.add_collection' | t }}</a></p>
+          <h3>{% comment %}ly_i18n_replace_for_[ 'homepage.onboarding.modal_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'homepage.onboarding.modal_title' | t }}{% endcapture %}{% include 'ly-static-string' with '3335121' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h3>
+          <p>{% comment %}ly_i18n_replace_for_[ 'homepage.onboarding.no_featured_products_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'homepage.onboarding.no_featured_products_html' | t }}{% endcapture %}{% include 'ly-static-string' with '3335125' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
+          <p><a href="/admin/collections/new" class="admin-btn-primary">{% comment %}ly_i18n_replace_for_[ 'homepage.onboarding.add_collection' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'homepage.onboarding.add_collection' | t }}{% endcapture %}{% include 'ly-static-string' with '3335123' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a></p>
         </div>
         <div class="grid grid--no-gutters grid--uniform collection small--hide helper-content">
           <div class="grid__item small--one-half medium-up--one-fifth">
             <a href="{{ collection_object.url }}" class="collection-card">
               <div class="collection-card__meta">
-                <p class="h1 collection-card__title">{{ 'homepage.onboarding.collection_title' | t }}</p>
-                <p class="collection-card__subtext">{{ 'collections.general.view_all' | t }}</p>
+                <p class="h1 collection-card__title">{% comment %}ly_i18n_replace_for_[ 'homepage.onboarding.collection_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'homepage.onboarding.collection_title' | t }}{% endcapture %}{% include 'ly-static-string' with '3335124' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
+                <p class="collection-card__subtext">{% comment %}ly_i18n_replace_for_[ 'collections.general.view_all' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.view_all' | t }}{% endcapture %}{% include 'ly-static-string' with '3335120' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
               </div>
             </a>
           </div>
@@ -335,14 +335,14 @@
                   <img src="{{ imageUrl }}" alt="{{ product.featured_image.alt | escape }}" class="product-card__image">
                 </div>
                 <div class="product-card__info">
-                  <div class="product-card__name">{{ 'homepage.onboarding.product_title' | t }}</div>
+                  <div class="product-card__name">{% comment %}ly_i18n_replace_for_[ 'homepage.onboarding.product_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'homepage.onboarding.product_title' | t }}{% endcapture %}{% include 'ly-static-string' with '3335126' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</div>
                   <div class="product-card__price">
                     $19.99
                   </div>
                 </div>
                 <div class="product-card__overlay">
                   {% assign view_string_length = 'products.product.view' | t | size %}
-                  <span class="btn product-card__overlay-btn {% if view_string_length > 8 %} btn--narrow{% endif %}">{{ 'products.product.view' | t }}</span>
+                  <span class="btn product-card__overlay-btn {% if view_string_length > 8 %} btn--narrow{% endif %}">{% comment %}ly_i18n_replace_for_[ 'products.product.view' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.view' | t }}{% endcapture %}{% include 'ly-static-string' with '3335127' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
                 </div>
               </a>
             </div>

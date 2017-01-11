@@ -1,4 +1,4 @@
-{% comment %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% comment %}
   Meganav has 5 columns, up to 7 links per column.
   Remaining columns are products from parent collection.
 
@@ -44,12 +44,12 @@
     <div class="grid__item meganav__list {{ meganav_column_width }}{% if display_title %} meganav__list--has-title{% endif %}">
 
       {% if display_title %}
-        <h5 class="h1 meganav__title">{{ link.title }}</h5>
+        <h5 class="h1 meganav__title">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</h5>
       {% endif %}
 
       {% if display_products %}
         <li>
-          <a href="{{ link.url }}" class="meganav__link">{{ 'collections.general.all_of_collection' | t: collection: link.title }}</a>
+          <a href="{{ link.url }}" class="meganav__link">{% comment %}ly_i18n_replace_for_[ 'collections.general.all_of_collection' | t: collection: link.title ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.all_of_collection' | t: collection: link.title }}{% endcapture %}{% include 'ly-static-string' with '3334924' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% include 'ly-title' with link %}{% assign replacement = ly_translation %}{% assign ly_template = ly_template | replace: '[[collection]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
         </li>
       {% endif %}
 
@@ -86,7 +86,7 @@
             {% endunless %}
           {% endif %}
 
-          <a href="{{ childlink_url }}" class="meganav__link{% if childlink.active %} meganav__link--active{% endif %}">{{ childlink.title | escape }}</a>
+          <a href="{{ childlink_url }}" class="meganav__link{% if childlink.active %} meganav__link--active{% endif %}">{% comment %}ly_code_replace_for_[ childlink.title | escape ]_begin{% endcomment %}{% include 'ly-title' with childlink %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}</a>
         </li>
 
         {% comment %}

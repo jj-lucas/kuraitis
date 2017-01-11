@@ -1,14 +1,14 @@
-{% paginate blog.articles by 5 %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% paginate blog.articles by 5 %}
 
 <h1>
   {% if current_tags %}
     {{ current_tags.first }}
   {% else %}
-    {{ blog.title }}
+    {% comment %}ly_code_replace_for_[ blog.title ]_begin{% endcomment %}{% include 'ly-title' with blog %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
   {% endif %}
   <a href="{{ shop.url }}{{ blog.url }}.atom" class="blog__rss-link link-accent-color">
     {% include 'icon-rss' %}
-    <span class="icon__fallback-text">RSS</span>
+    <span class="icon__fallback-text"><ly-as-3334960>RSS</ly-as-3334960></span>
   </a>
 </h1>
 
@@ -26,25 +26,25 @@
           <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>
         </p>
 
-        <h2 class="blog__title-link"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+        <h2 class="blog__title-link"><a href="{{ article.url }}">{% comment %}ly_code_replace_for_[ article.title ]_begin{% endcomment %}{% include 'ly-title' with article %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a></h2>
 
         {% if article.image %}
           <div class="content-block__full-image content-block__full-image--large">
             <a href="{{ article.url }}">
-              {{ article | img_url: '1024x1024' | img_tag: article.title }}
+              {% comment %}ly_code_replace_for_[ article | img_url: '1024x1024' | img_tag: article.title ]_begin{% endcomment %}{% include 'ly-title' with article %}{{ article | img_url: '1024x1024' | img_tag: ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
             </a>
           </div>
         {% endif %}
 
         <div class="rte rte--indented-images">
           {% if article.excerpt.size > 0 %}
-            {{ article.excerpt }}
+            {% comment %}ly_code_replace_for_[ article.excerpt ]_begin{% endcomment %}{% include 'ly-excerpt' with article %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
           {% else %}
-            <p>{{ article.content | strip_html | truncatewords: 100 }}</p>
+            <p>{% comment %}ly_code_replace_for_[ article.content | strip_html | truncatewords: 100 ]_begin{% endcomment %}{% include 'ly-content' with article %}{{ ly_translation | strip_html | truncatewords: 100 }}{% comment %}ly_code_replace_end{% endcomment %}</p>
           {% endif %}
         </div>
 
-        <p><a href="{{ article.url }}"><strong>{{ 'blogs.article.read_more' | t }}</strong></a></p>
+        <p><a href="{{ article.url }}"><strong>{% comment %}ly_i18n_replace_for_[ 'blogs.article.read_more' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.read_more' | t }}{% endcapture %}{% include 'ly-static-string' with '3334963' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</strong></a></p>
 
       </div>
     {% endfor %}
@@ -52,10 +52,10 @@
   <div class="grid__item medium-up--one-quarter large-up--one-fifth small--hide">
     {% if blog.all_tags.size > 0 %}
       <div class="content-block">
-        <h6 class="content-block__title">{{ 'blogs.article.tags' | t }}</h6>
+        <h6 class="content-block__title">{% comment %}ly_i18n_replace_for_[ 'blogs.article.tags' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.tags' | t }}{% endcapture %}{% include 'ly-static-string' with '3334964' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h6>
         <ul class="list--no-bullets list--bold">
           <li>
-            <a href="{{ blog.url }}">{{ 'blogs.article.all_tags' | t }}</a>
+            <a href="{{ blog.url }}">{% comment %}ly_i18n_replace_for_[ 'blogs.article.all_tags' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.all_tags' | t }}{% endcapture %}{% include 'ly-static-string' with '3334965' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
           </li>
           {% for tag in blog.all_tags %}
             {% if current_tags contains tag %}
@@ -73,7 +73,7 @@
 
 {% if paginate.pages > 1 %}
   <div class="pagination">
-    {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+    {{ paginate | default_pagination | replace: '&laquo; <ly-as-3335220>Previous</ly-as-3335220>', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
   </div>
 {% endif %}
 
