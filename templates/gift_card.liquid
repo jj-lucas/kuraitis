@@ -1,5 +1,5 @@
 {% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% layout none %}
-{% assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros: gift_card.currency %}
+{% assign geolizr_price =  gift_card.initial_value  %}{% include 'geolizr-currency' with geolizr_price %}{% assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros | prepend: geolizr_prepend_code | append: geolizr_append_code: gift_card.currency %}
 {% assign formatted_initial_value_stripped = formatted_initial_value | strip_html %}
 
 <!doctype html>
@@ -67,7 +67,7 @@
             <h2 class="giftcard__amount">{{ formatted_initial_value }}</h2>
 
             {% if gift_card.balance != gift_card.initial_value %}
-              <p class="giftcard__amount-remaining">{% comment %}ly_i18n_replace_for_[ 'gift_cards.issued.remaining_html' | t: balance: gift_card.balance | money ]_begin{% endcomment %}{% capture ly_template %}{{ 'gift_cards.issued.remaining_html' | t: balance: gift_card.balance | money }}{% endcapture %}{% include 'ly-static-string' with '3335107' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = gift_card.balance  %}{% assign ly_template = ly_template | replace: '[[balance]]', replacement %}{% if escape_content %}{{ ly_template | money }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
+              <p class="giftcard__amount-remaining">{% comment %}ly_i18n_replace_for_[ 'gift_cards.issued.remaining_html' | t: balance: gift_card.balance | money ]_begin{% endcomment %}{% capture ly_template %}{% assign geolizr_price =  'gift_cards.issued.remaining_html' | t: balance: gift_card.balance  %}{% include 'geolizr-currency' with geolizr_price %}{{ 'gift_cards.issued.remaining_html' | t: balance: gift_card.balance | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}{% endcapture %}{% include 'ly-static-string' with '3335107' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = gift_card.balance  %}{% assign ly_template = ly_template | replace: '[[balance]]', replacement %}{% if escape_content %}{% assign geolizr_price =  ly_template  %}{% include 'geolizr-currency' with geolizr_price %}{{ ly_template | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
             {% endif %}
           </div>
 

@@ -45,7 +45,7 @@
 
 {% comment %}ly_dir_styles_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %}{% comment %}ly_asset_replace_for_[ 'ly-rtl.css' | asset_url | stylesheet_tag ]_begin{% endcomment %}{% assign ly_asset = 'ly-rtl.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | stylesheet_tag }}{% comment %}ly_asset_replace_end{% endcomment %}{% endif %}{% comment %}ly_dir_styles_end{% endcomment %}</head>
 
-<body id="{{ langify_title | handle }}" class="kuraitis {% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+<body id="{{ langify_title | handle }}" class="kuraitis {% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >{% include 'geolizr-lib' %}{% include 'geolizr-api' %}
 
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{% comment %}ly_i18n_replace_for_[ 'general.accessibility.skip_to_content' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.accessibility.skip_to_content' | t }}{% endcapture %}{% include 'ly-static-string' with '3334866' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
 
@@ -549,6 +549,26 @@
       </button>
     </div>
   {% endif %}
-{% comment %}ly_static_code_begin{% endcomment %}{% include 'ly-languages' %}{% comment %}ly_static_code_end{% endcomment %}</body>
+{% comment %}ly_static_code_begin{% endcomment %}{% include 'ly-languages' %}{% comment %}ly_static_code_end{% endcomment %}{% include 'geolizr-currency-converter' %}
+
+<script>
+  GeolizrAPI.addEventListener('geolizr.geoData', function(geoData) {
+    var countryToLanguages = {
+      "DK": "ly24939"
+    }
+    
+    var onChangeLanguage = function() {
+      Geolizr.cookie('manually_selected_language', true);
+    }
+    $('#ly-languages-switcher').change(onChangeLanguage);
+    $('.ly-languages-switcher-link').click(onChangeLanguage);
+    var languageId = countryToLanguages[geoData.country.code];
+    if(!Geolizr.cookie('manually_selected_language') && languageId && languageId != "{{ language }}") {
+      langify.helper.saveLanguage(languageId);
+    }
+  });
+</script>
+
+</body>
 </html>
 {% comment %}ly_static_code_begin{% endcomment %}{% endcapture %}{% include 'ly-static' with ly_content %}{% comment %}ly_static_code_end{% endcomment %}

@@ -24,14 +24,14 @@
             Product is on sale
           {% endcomment %}
           {% if product.price_varies %}
-            {% assign sale_price = product.price | money_without_trailing_zeros %}
+            {% assign geolizr_price =  product.price  %}{% include 'geolizr-currency' with geolizr_price %}{% assign sale_price = product.price | money_without_trailing_zeros | prepend: geolizr_prepend_code | append: geolizr_append_code %}
             {% comment %}ly_i18n_replace_for_[ 'products.product.on_sale_from_html' | t: price: sale_price ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.on_sale_from_html' | t: price: sale_price }}{% endcapture %}{% include 'ly-static-string' with '3334926' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = sale_price  %}{% assign ly_template = ly_template | replace: '[[price]]', replacement %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
           {% else %}
             <span class="visually-hidden">{% comment %}ly_i18n_replace_for_[ 'products.product.regular_price' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.regular_price' | t }}{% endcapture %}{% include 'ly-static-string' with '3334927' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
-            <s class="product-card__regular-price">{{ product.compare_at_price | money_without_trailing_zeros }}</s>
+            <s class="product-card__regular-price">{% assign geolizr_price =  product.compare_at_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ product.compare_at_price | money_without_trailing_zeros | prepend: geolizr_prepend_code | append: geolizr_append_code }}</s>
 
             <span class="visually-hidden">{% comment %}ly_i18n_replace_for_[ 'products.product.sale_price' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.sale_price' | t }}{% endcapture %}{% include 'ly-static-string' with '3334928' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
-            {{ product.price | money_without_trailing_zeros }}
+            {% assign geolizr_price =  product.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price | money_without_trailing_zeros | prepend: geolizr_prepend_code | append: geolizr_append_code }}
           {% endif %}
 
         {% else %}
@@ -39,10 +39,10 @@
             Not on sale, but could still have varying prices
           {% endcomment %}
           {% if product.price_varies %}
-            {% assign price = product.price | money_without_trailing_zeros %}
+            {% assign geolizr_price =  product.price  %}{% include 'geolizr-currency' with geolizr_price %}{% assign price = product.price | money_without_trailing_zeros | prepend: geolizr_prepend_code | append: geolizr_append_code %}
             {% comment %}ly_i18n_replace_for_[ 'products.product.from_text_html' | t: price: price ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.from_text_html' | t: price: price }}{% endcapture %}{% include 'ly-static-string' with '3334930' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = price  %}{% assign ly_template = ly_template | replace: '[[price]]', replacement %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
           {% else %}
-            {{ product.price | money_without_trailing_zeros }}
+            {% assign geolizr_price =  product.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ product.price | money_without_trailing_zeros | prepend: geolizr_prepend_code | append: geolizr_append_code }}
           {% endif %}
 
         {% endif %}

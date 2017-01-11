@@ -73,14 +73,14 @@
             </li>
             <li>
               <span id="ProductPrice" class="product-single__price" itemprop="price">
-                {{ current_variant.price | money_without_trailing_zeros }}
+                {% assign geolizr_price =  current_variant.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ current_variant.price | money_without_trailing_zeros | prepend: geolizr_prepend_code | append: geolizr_append_code }}
               </span>
             </li>
             {% if product.compare_at_price_max > product.price %}
               <li>
                 <span class="visually-hidden">{% comment %}ly_i18n_replace_for_[ 'products.product.regular_price' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.regular_price' | t }}{% endcapture %}{% include 'ly-static-string' with '3335153' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
                 <s id="ComparePrice" class="product-single__price product-single__price--compare">
-                  {{ current_variant.compare_at_price | money_without_trailing_zeros }}
+                  {% assign geolizr_price =  current_variant.compare_at_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ current_variant.compare_at_price | money_without_trailing_zeros | prepend: geolizr_prepend_code | append: geolizr_append_code }}
                 </s>
               </li>
             {% endif %}
@@ -99,7 +99,7 @@
           <select name="id" id="ProductSelect" class="product-form__variants">
             {% for variant in product.variants %}
               {% if variant.available %}
-                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{% comment %}ly_code_replace_for_[ variant.title ]_begin{% endcomment %}{% include 'ly-title' with variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %} - {{ variant.price | money_with_currency }}</option>
+                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{% comment %}ly_code_replace_for_[ variant.title ]_begin{% endcomment %}{% include 'ly-title' with variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %} - {% assign geolizr_price =  variant.price  %}{% include 'geolizr-currency' with geolizr_price %}{{ variant.price | money_with_currency | prepend: geolizr_prepend_code | append: geolizr_append_code }}</option>
               {% else %}
                 <option disabled="disabled">
                   {% comment %}ly_code_replace_for_[ variant.title ]_begin{% endcomment %}{% include 'ly-title' with variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %} - {% comment %}ly_i18n_replace_for_[ 'products.product.sold_out' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.sold_out' | t }}{% endcapture %}{% include 'ly-static-string' with '3335154' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
