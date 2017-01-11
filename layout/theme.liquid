@@ -1,4 +1,5 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% comment %}ly_static_code_begin{% endcomment %}{% capture ly_content %}{% comment %}ly_static_code_end{% endcomment %}<!doctype html>
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}
+{% comment %}ly_static_code_begin{% endcomment %}{% capture ly_content %}{% comment %}ly_static_code_end{% endcomment %}<!doctype html>
 <!--[if IE 9]> <html class="ie9 supports-no-js" lang="{{ shop.locale }}"{% comment %}ly_dir_replace_for_[]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %} dir="rtl" {% endif %}{% comment %}ly_dir_replace_end{% endcomment %}> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="supports-no-js" lang="{{ shop.locale }}"{% comment %}ly_dir_replace_for_[]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %} dir="rtl" {% endif %}{% comment %}ly_dir_replace_end{% endcomment %}> <!--<![endif]-->
 <head>
@@ -159,6 +160,7 @@
 
           <div class="grid__item small--one-quarter medium-up--one-third text-right">
             <div id="SiteNavSearchCart">
+
               <form action="/search" method="get" class="site-header__search small--hide" role="search">
                 {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
                 <div class="site-header__search-inner">
@@ -177,6 +179,8 @@
                 <span class="icon__fallback-text">{% comment %}ly_i18n_replace_for_[ 'layout.cart.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.cart.title' | t }}{% endcapture %}{% include 'ly-static-string' with '3334874' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
                 <span class="site-header__cart-indicator {% if cart.item_count == 0 %}hide{% endif %}"></span>
               </a>
+
+              {% include 'ly-languages-switcher' %}
             </div>
           </div>
         </div>
