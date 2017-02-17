@@ -27,7 +27,7 @@
     "type_nav_transform": true,
     "logo_use_image": false,
     "logo_max_width": "450",
-    "favicon_enable": false,
+    "favicon_enable": true,
     "promo_bar_enable": false,
     "promo_bar_text": "",
     "promo_bar_link": "",
