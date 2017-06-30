@@ -28,9 +28,56 @@
 		padding-bottom: 32px;
 	}
 
+	.site-header__logo {
+		span {
+			margin-top: 25px;
+			margin-left: 15px;
+			display: inline-block;
+
+			@media only screen and (max-width: 749px) {
+				margin-left: 0;
+				margin-top: 20px;
+			}
+		}
+
+		img {
+			display: inline-block;
+			float: left;
+		}
+	}
+
+	@media only screen and (min-width: 750px) {
+		.site-header__upper {
+			padding-top: 0;
+			padding-bottom: 0;
+			padding-left: 0;
+		}
+	}
+
 	@media only screen and (max-width: 749px){
-		.site-header__shop-name--small small {
-			display: none;
+		.site-header__upper {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+		.site-header__shop-name--small {
+			width: 172px;
+			margin-left: -20px;
+
+			small {
+				display: none;
+			}
+		}
+		.site-header__logo {
+			span {
+				max-width: 94px;
+				vertical-align: top;
+			}
+
+			img {
+				display: inline-block;
+				float: none;
+				margin-top: 10px;
+			}
 		}
 	}
 
