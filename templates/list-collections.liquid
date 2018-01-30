@@ -1,5 +1,30 @@
-{% comment %}
-  The contents of the lists-collections.liquid template can be found in /sections/lists-collections-template.liquid
-{% endcomment %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% for link in linklists.all-collections.links %}
+{% assign collection = link.object %}
+  {% unless collection.handle == 'frontpage' %}
 
-{% section 'list-collections-template' %}
+  <div class="grid grid--no-gutters grid--uniform collection">
+    <div class="grid__item small--one-half medium-up--one-fifth">
+      {% if collection.image %}
+        {% assign collection_image = collection | img_url: 'large' %}
+      {% else %}
+        {% assign collection_image = collection.products.first | img_url: 'large' %}
+      {% endif %}
+      <a href="{{ collection.url }}" class="collection-card" style="background-image: url({{ collection_image }});">
+        <div class="collection-card__meta">
+          <p class="h1 collection-card__title">{% comment %}ly_code_replace_for_[ collection.title ]_begin{% endcomment %}{% include 'ly-title' with collection %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</p>
+          <p class="collection-card__subtext">{% comment %}ly_i18n_replace_for_[ 'collections.general.view_all' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.view_all' | t }}{% endcapture %}{% include 'ly-static-string' with '6316596' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
+        </div>
+      </a>
+    </div>
+    {% for product in collection.products limit: 9 %}
+      {% comment %}
+        Hide the last product for a better mobile view
+      {% endcomment %}
+      <div class="grid__item small--one-half medium-up--one-fifth{% if forloop.index == 9 %} small--hide{% endif %}">
+        {% include 'product-card', product: product %}
+      </div>
+    {% endfor %}
+  </div>
+
+  {% endunless %}
+{% endfor %}
