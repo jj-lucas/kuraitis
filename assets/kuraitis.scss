@@ -181,6 +181,8 @@
 
 	#ly-languages-switcher {
 		display: inline-block;
+		margin-top: 15px;
+		vertical-align: top;
 
 		.ly-languages-switcher-link {
 			margin: -3px 0 0 10px;
@@ -190,7 +192,5 @@
 	}
 
 	.sticky--active #ly-languages-switcher {
-		display: none;
 	}
 }
-

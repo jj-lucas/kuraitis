@@ -8,7 +8,7 @@
   {% endif %}
   <a href="{{ shop.url }}{{ blog.url }}.atom" class="blog__rss-link link-accent-color">
     {% include 'icon-rss' %}
-    <span class="icon__fallback-text"><ly-as-3334960>RSS</ly-as-3334960></span>
+    <span class="icon__fallback-text"><ly-as-6316432>RSS</ly-as-6316432></span>
   </a>
 </h1>
 
@@ -44,7 +44,7 @@
           {% endif %}
         </div>
 
-        <p><a href="{{ article.url }}"><strong>{% comment %}ly_i18n_replace_for_[ 'blogs.article.read_more' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.read_more' | t }}{% endcapture %}{% include 'ly-static-string' with '3334963' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</strong></a></p>
+        <p><a href="{{ article.url }}"><strong>{% comment %}ly_i18n_replace_for_[ 'blogs.article.read_more' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.read_more' | t }}{% endcapture %}{% include 'ly-static-string' with '6316434' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</strong></a></p>
 
       </div>
     {% endfor %}
@@ -52,10 +52,10 @@
   <div class="grid__item medium-up--one-quarter large-up--one-fifth small--hide">
     {% if blog.all_tags.size > 0 %}
       <div class="content-block">
-        <h6 class="content-block__title">{% comment %}ly_i18n_replace_for_[ 'blogs.article.tags' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.tags' | t }}{% endcapture %}{% include 'ly-static-string' with '3334964' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h6>
+        <h6 class="content-block__title">{% comment %}ly_i18n_replace_for_[ 'blogs.article.tags' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.tags' | t }}{% endcapture %}{% include 'ly-static-string' with '6316435' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h6>
         <ul class="list--no-bullets list--bold">
           <li>
-            <a href="{{ blog.url }}">{% comment %}ly_i18n_replace_for_[ 'blogs.article.all_tags' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.all_tags' | t }}{% endcapture %}{% include 'ly-static-string' with '3334965' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
+            <a href="{{ blog.url }}">{% comment %}ly_i18n_replace_for_[ 'blogs.article.all_tags' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.all_tags' | t }}{% endcapture %}{% include 'ly-static-string' with '6316436' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
           </li>
           {% for tag in blog.all_tags %}
             {% if current_tags contains tag %}
@@ -73,7 +73,7 @@
 
 {% if paginate.pages > 1 %}
   <div class="pagination">
-    {{ paginate | default_pagination | replace: '&laquo; <ly-as-3335220>Previous</ly-as-3335220>', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+    {{ paginate | default_pagination | replace: '&laquo; <ly-as-6316433>Previous</ly-as-6316433>', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
   </div>
 {% endif %}
 

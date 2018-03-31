@@ -14,27 +14,23 @@
       "404_link": "Retourner au magasinage"
     },
     "password_page": {
-      "opening_soon": "Bientôt ouvert",
-      "spread_the_word": "Passez le mot",
       "login_form_heading": "Accéder à la boutique à l'aide d'un mot de passe",
       "login_form_password_label": "Mot de passe",
       "login_form_password_placeholder": "Votre mot de passe",
       "login_form_submit": "Entrer",
-      "signup_form_heading": "Soyez le premier informé de notre lancement",
       "signup_form_email_label": "Courriel",
-      "signup_form_email_placeholder": "Votre courriel",
-      "signup_form_submit": "Soumettre",
       "signup_form_success": "Nous vous ferons parvenir un courriel juste avant l'ouverture!",
       "admin_link_html": "Êtes-vous le propriétaire de la boutique? <a href=\"\/admin\" class=\"text-link\">Connectez-vous ici<\/a>.",
       "password_link": "Entrer avec un mot de passe",
       "powered_by_shopify_html": "Cette boutique sera propulsée par {{ shopify }}"
     },
     "social": {
-      "share_on_facebook": "Partager",
-      "share_on_twitter": "Tweeter",
-      "share_on_pinterest": "Épingler",
-      "share_on_fancy": "Partager sur Fancy",
-      "share_title": "Partager"
+      "share_title": "Partager",
+      "alt_text": {
+        "share_on_facebook": "Partager sur Facebook",
+        "share_on_twitter": "Tweeter sur Twitter",
+        "share_on_pinterest": "Épingler sur Pinterest"
+      }
     },
     "newsletter_form": {
       "newsletter_heading": "Soyez au courant",
@@ -65,6 +61,7 @@
   "blogs": {
     "article": {
       "tags": "Tags",
+      "view_all": "Voir toutes",
       "all_tags": "Tout",
       "read_more": "Plus",
       "back_to_blog": "Retour à {{ title }}"
@@ -87,11 +84,13 @@
   "cart": {
     "general": {
       "title": "Panier",
+      "remove": "Retirer",
       "note": "Instructions spéciales pour la commande",
       "shipping_at_checkout": "Frais de port et remises calculés à la caisse",
       "update": "Mettre à jour",
       "checkout": "Procéder au paiement",
       "empty": "Votre panier est vide.",
+      "cookies_required": "Activer les cookies pour utiliser le panier",
       "continue_browsing": "Retourner au magasinage",
       "close_notification": "Close",
       "savings_html": "Vous économisez {{ price }}"
@@ -99,27 +98,22 @@
     "label": {
       "product": "Produit",
       "quantity": "Quantité",
-      "increase_quantity": "Augmenter la quantité",
-      "decrease_quantity": "Réduire la quantité",
+      "decrease_quantity": "Réduire la quantité de l'article de un",
+      "increase_quantity": "Augmenter la quantité de l'article de un",
       "total": "Total"
     }
   },
   "collections": {
     "general": {
       "view_all": "Voir toutes",
-      "all_of_collection": "Tous {{ collection }}",
+      "all_of_collection": "Tout",
       "no_matches": "Aucun produit ne correspond à votre recherche.",
       "link_title": "Consultez la collection {{ title }}"
-    },
-    "onboarding": {
-      "modal_title": "Cette page affichera tous les produits de votre magasin",
-      "no_products_html": "Il n'y a aucun produit pour l'instant, mais dès que vous commencerez à les ajouter, ils s'afficheront ici, qu'ils soient dans une collection ou non.",
-      "add_product": "Ajouter un produit"
     },
     "sorting": {
       "title": "Trier",
       "title_tags": "Filtrer",
-      "all_of_collection": "Tous {{ collection }}",
+      "all_of_collection": "Tout",
       "featured": "En vedette",
       "best_selling": "Meilleurs vendeurs",
       "az": "A-Z",
@@ -184,7 +178,6 @@
       "password": "Mot de passe",
       "forgot_password": "Mot de passe oublié?",
       "sign_in": "Se connecter",
-      "cancel": "Retourner à la boutique",
       "guest_title": "Continuer en tant qu'invité",
       "guest_continue": "Continuer"
     },
@@ -215,7 +208,8 @@
       "quantity": "Quantité",
       "total": "Total",
       "fulfilled_at": "Traitée le {{ date }}",
-      "subtotal": "Sous-total"
+      "subtotal": "Sous-total",
+      "track_shipment": "Retracer l'envoi"
     },
     "recover_password": {
       "title": "Réinitialiser votre mot de passe",
@@ -237,9 +231,8 @@
       "first_name": "Prénom",
       "last_name": "Nom",
       "email": "Courriel",
-      "submit": "Créer",
-      "cancel": "Retour à la boutique",
-      "password": "Mot de passe"
+      "password": "Mot de passe",
+      "submit": "Créer"
     }
   },
   "homepage": {
@@ -250,12 +243,10 @@
       "play_slideshow": "Jouer le diaporama"
     },
     "onboarding": {
-      "modal_title": "Nous y sommes presque...",
-      "no_featured_products_html": "Créez ou sélectionnez vos <a href=\"\/admin\/collections\">collections<\/a> dans les paramètres de thème pour exposer les produits mis en avant ici.",
+      "blog_title": "Le titre de votre publication",
       "product_title": "Titre du produit",
-      "no_collections_html": "Définir jusqu'à six collections présentées dans les paramètres de thème à présenter ici. Vous n'avez pas de collection à afficher ici. <a href=\"\/admin\/collections\">Ajoutez une ou plusieurs collections<\/a> pour compléter la page d'accueil par défaut.",
-      "add_collection": "Ajouter une collection",
-      "collection_title": "Titre de la collection"
+      "collection_title": "Titre de la collection",
+      "no_content": "Cette section ne contient actuellement aucun contenu. Ajoutez-en en utilisant la barre latérale."
     }
   },
   "layout": {
@@ -271,8 +262,7 @@
       "featured_products": "Produits en vedette"
     },
     "footer": {
-      "social_platform": "{{ name }} sur {{ platform }}",
-      "footer_line": "CVR: 32220649 | Ulleruphusevej 12, 7900 Nykøbing Mors  | Tlf.: 60608617 | sergio@kuraitis.dk"
+      "social_platform": "{{ name }} sur {{ platform }}"
     }
   },
   "products": {
@@ -288,8 +278,11 @@
       "from_text_html": "À partir de {{ price }}",
       "quantity": "Quantité",
       "add_to_cart": "Ajouter au panier",
-      "view": "Vue",
-      "stock_available": "{{ count }} restant",
+      "view": "Voir",
+      "stock_available": {
+        "one": "{{ count }} restant",
+        "other": "{{ count }} restant"
+      },
       "collection_return": "Retour à {{ collection }}",
       "product_added_to_cart_html": "Article ajouté au panier. <span>Voir le panier et passer à la caisse<\/span>.",
       "stock_unavailable": "L'article n'a pu être ajouté à votre panier car il n'y en a pas assez en stock."
@@ -311,5 +304,18 @@
   },
   "date_formats": {
     "month_day_year": "%d %B, %Y"
+  },
+  "sections": {
+    "map": {
+      "get_directions": "Obtenir des directions",
+      "address_error": "Vous ne trouvez pas cette adresse",
+      "address_no_results": "Aucun résultat pour cette adresse",
+      "address_query_limit_html": "Vous avez dépassé la limite de Google utilisation de l'API. Envisager la mise à niveau à un <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">régime spécial<\/a>.",
+      "auth_error_html": "Il y avait un problème authentifier votre compte Google Maps API."
+    }
+  },
+  "video": {
+    "play": "Lire la vidéo",
+    "close": "Arrêter la vidéo"
   }
 }

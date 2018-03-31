@@ -12,7 +12,7 @@
       <a href="{{ collection.url }}" class="collection-card" style="background-image: url({{ collection_image }});">
         <div class="collection-card__meta">
           <p class="h1 collection-card__title">{% comment %}ly_code_replace_for_[ collection.title ]_begin{% endcomment %}{% include 'ly-title' with collection %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</p>
-          <p class="collection-card__subtext">{% comment %}ly_i18n_replace_for_[ 'collections.general.view_all' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.view_all' | t }}{% endcapture %}{% include 'ly-static-string' with '3335128' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
+          <p class="collection-card__subtext">{% comment %}ly_i18n_replace_for_[ 'collections.general.view_all' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.view_all' | t }}{% endcapture %}{% include 'ly-static-string' with '6316596' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
         </div>
       </a>
     </div>

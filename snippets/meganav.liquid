@@ -49,7 +49,7 @@
 
       {% if display_products %}
         <li>
-          <a href="{{ link.url }}" class="meganav__link">{% comment %}ly_i18n_replace_for_[ 'collections.general.all_of_collection' | t: collection: link.title ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.all_of_collection' | t: collection: link.title }}{% endcapture %}{% include 'ly-static-string' with '3334924' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% include 'ly-title' with link %}{% assign replacement = ly_translation %}{% assign ly_template = ly_template | replace: '[[collection]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
+          <a href="{{ link.url }}" class="meganav__link">{% comment %}ly_i18n_replace_for_[ 'collections.general.all_of_collection' | t: collection: link.title ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.all_of_collection' | t: collection: link.title }}{% endcapture %}{% include 'ly-static-string' with '6316397' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% include 'ly-title' with link %}{% assign replacement = ly_translation %}{% assign ly_template = ly_template | replace: '[[collection]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
         </li>
       {% endif %}
 
