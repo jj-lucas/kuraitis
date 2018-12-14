@@ -1,4 +1,5 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% if cart.item_count > 0 %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}
+{% if cart.item_count > 0 %}
 
   <h1 class="small--text-center">{% comment %}ly_i18n_replace_for_[ 'cart.general.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.general.title' | t }}{% endcapture %}{% include 'ly-static-string' with '6316437' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h1>
   <form action="/cart{% comment %}ly_checkout_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign checkout_code = shop.metafields.language_codes[language] %}{% if checkout_code %}{% assign checkout_code = '?locale=' | append: checkout_code %}{{ checkout_code }}{% endif %}{% comment %}ly_checkout_end{% endcomment %}" method="post" novalidate class="cart">
@@ -68,10 +69,10 @@
             </td>
             <td class="cart__cell--total">
               {% if item.original_line_price != item.line_price %}
-                <small class="cart-item__original-price cart__item-total"><s>{% assign geolizr_price =  item.original_line_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ item.original_line_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</s></small><br>
+                <small class="cart-item__original-price cart__item-total"><s>{{ item.original_line_price | money  }}</s></small><br>
               {% endif %}
               <span class="cart__item-total">
-                {% assign geolizr_price =  item.line_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ item.line_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
+                {{ item.line_price | money  }}
               </span>
               {% for discount in item.discounts %}
                 <p class="cart-item__discount cart__item-total">{% comment %}ly_code_replace_for_[ discount.title ]_begin{% endcomment %}{% include 'ly-title' with discount %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</p>
@@ -89,10 +90,10 @@
         </div>
       {% endif %}
       <div class="grid__item cart__buttons text-right small--text-center{% if settings.cart_notes_enable %} medium-up--one-half{% endif %}">
-        <p class="h3 cart__subtotal" id="CartSubtotal">{% assign geolizr_price =  cart.total_price  %}{% include 'geolizr-currency' with geolizr_price %}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</p>
+        <p class="h3 cart__subtotal" id="CartSubtotal">{{ cart.total_price | money }}</p>
         <p id="cartDiscountTotal">
         {% if cart.total_discounts > 0 %}
-          {% assign geolizr_price =  cart.total_discounts  %}{% include 'geolizr-currency' with geolizr_price %}{% assign savings = cart.total_discounts | money | prepend: geolizr_prepend_code | append: geolizr_append_code %}
+          {% assign savings = cart.total_discounts | money %}
           {% comment %}ly_i18n_replace_for_[ 'cart.general.savings_html' | t: price: savings ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.general.savings_html' | t: price: savings }}{% endcapture %}{% include 'ly-static-string' with '6316445' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = savings  %}{% assign ly_template = ly_template | replace: '[[price]]', replacement %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
         {% endif %}
         </p>

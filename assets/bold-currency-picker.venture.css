@@ -238,3 +238,20 @@
 .BOLD-mc-picker-mnt[data-open="down"] > .BOLD-mc-picker > .currencyList {
     top: 31px;
     bottom: auto; }
+
+.site-header .BOLD-mc-picker-mnt .currentCurrency {
+    background: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    color: #fff; }
+
+.site-header .BOLD-mc-picker-mnt .current-currency-flag {
+    margin-top: 4px; }
+
+.site-header .BOLD-mc-picker-mnt .chevron {
+    fill: #fff; }
+
+#StickyNavSearchCart .BOLD-mc-picker-mnt {
+    float: right;
+    margin-top: 6px; }
