@@ -1,120 +1,133 @@
 {
   "current": {
-    "checkout_accent_color": "#006eff",
-    "checkout_button_color": "#006eff",
-    "checkout_banner_background_color": "#fff",
-    "checkout_call_to_action_color": "#006eff",
-    "checkout_use_header_image": false,
+    "color_header_bg": "#f8f8f8",
+    "color_header_links": "#1a1a1a",
     "color_body_bg": "#f7f7f7",
+    "color_content_bg": "#ffffff",
     "color_body_headings": "#030303",
-    "color_body_text": "#666",
-    "color_button_bg": "#006eff",
-    "color_button_text": "#fff",
-    "color_content_bg": "#fff",
+    "color_body_text": "#000000",
+    "color_button_bg": "#1e77ee",
+    "color_button_text": "#ffffff",
     "color_footer_bg": "#030303",
-    "color_footer_text": "#fff",
-    "color_header_bg": "#030303",
-    "color_header_links": "#fff",
-    "color_hero_bg": "#006eff",
-    "color_hero_text": "#fff",
+    "color_footer_text": "#ffffff",
     "color_newsletter_input": "#1a1a1a",
-    "type_accent_bold": false,
+    "color_hero_text": "#ffffff",
+    "color_hero_bg": "#3e2f1a",
+    "color_featured_collection_text": "#1a1a1a",
+    "color_featured_collection_bg": "rgba(0,0,0,0)",
+    "color_featured_collection_links": "#006eff",
     "type_accent_family": "Google_Unica+One_400_sans",
+    "type_accent_bold": false,
     "type_accent_spacing": true,
     "type_accent_transform": true,
-    "type_base_family": "Google_Karla_400_sans",
-    "type_base_size": "16px",
+    "type_base_family": "Google_Droid+Sans_400_sans",
+    "type_base_size": "15px",
     "type_nav_size": "14px",
     "type_nav_spacing": true,
     "type_nav_transform": true,
-    "sections": {
-      "slideshow": {
-        "type": "slideshow",
-        "blocks": {
-          "placeholder": {
-            "type": "slide",
-            "settings": {}
-          }
-        },
-        "block_order": [
-          "placeholder"
-        ],
-        "settings": {}
-      },
-      "footer": {
-        "type": "footer",
-        "blocks": {
-          "linklist": {
-            "type": "menu",
-            "settings": {}
-          },
-          "social": {
-            "type": "social",
-            "settings": {}
-          }
-        },
-        "block_order": [
-          "linklist",
-          "social"
-        ],
-        "settings": {}
-      },
-      "featured-collections": {
-        "type": "featured-collections",
-        "blocks": {
-          "featured-collections-0": {
-            "type": "collection",
-            "settings": {}
-          },
-          "featured-collections-1": {
-            "type": "collection",
-            "settings": {}
-          },
-          "featured-collections-2": {
-            "type": "collection",
-            "settings": {}
-          }
-        },
-        "block_order": [
-          "featured-collections-0",
-          "featured-collections-1",
-          "featured-collections-2"
-        ],
-        "settings": {}
-      },
-      "featured-products": {
-        "type": "featured-products",
-        "settings": {
-          "collection": "frontpage"
-        }
-      },
-      "image-content": {
-        "type": "image-content",
-        "blocks": {
-          "image-content-0": {
-            "type": "image_block",
-            "settings": {}
-          },
-          "image-content-1": {
-            "type": "text_block",
-            "settings": {}
-          }
-        },
-        "block_order": [
-          "image-content-0",
-          "image-content-1"
-        ],
-        "settings": {}
-      }
-    },
-    "content_for_index": [
-      "featured-collections",
-      "featured-products",
-      "image-content"
-    ]
+    "logo_use_image": true,
+    "logo_max_width": "78",
+    "favicon_enable": true,
+    "promo_bar_enable": false,
+    "promo_bar_text": "",
+    "promo_bar_link": "",
+    "footer_page_content": "",
+    "footer_linklist_1": "main-menu",
+    "footer_linklist_2": "",
+    "footer_newsletter_enable": true,
+    "newsletter_form_action": "",
+    "hero_enable": true,
+    "hero_slide_1_enable": false,
+    "hero_slide_1_heading": "",
+    "hero_slide_1_cta": "",
+    "hero_slide_1_link": "\/collections\/all",
+    "hero_slide_2_enable": false,
+    "hero_slide_2_heading": "",
+    "hero_slide_2_cta": "",
+    "hero_slide_2_link": "",
+    "hero_slide_3_enable": false,
+    "hero_slide_3_heading": "",
+    "hero_slide_3_cta": "",
+    "hero_slide_3_link": "",
+    "hero_slide_4_enable": true,
+    "hero_slide_4_heading": "",
+    "hero_slide_4_cta": "",
+    "hero_slide_4_link": "",
+    "hero_slide_5_enable": false,
+    "hero_slide_5_heading": "",
+    "hero_slide_5_cta": "",
+    "hero_slide_5_link": "",
+    "featured_collections_enable": true,
+    "show_mobile_featured_collection": false,
+    "home_featured_collections_1": "office-accessories",
+    "home_featured_collections_2": "cases",
+    "home_featured_collections_3": "credit-card-holders",
+    "home_featured_collections_4": "key-cases",
+    "home_featured_collections_5": "wallets",
+    "home_featured_collections_6": "miscellaneous",
+    "home_featured_cover_image_enable": false,
+    "home_page_content": "frontpage",
+    "featured_products_enable": false,
+    "show_mobile_featured_products": false,
+    "home_featured_products_1": "",
+    "home_featured_products_rows_1": "2",
+    "home_featured_products_2": "",
+    "home_featured_products_rows_2": "1",
+    "home_featured_products_3": "",
+    "home_featured_products_rows_3": "1",
+    "home_featured_products_4": "",
+    "home_featured_products_rows_4": "1",
+    "product_stock_enable": true,
+    "product_images_padding": false,
+    "product_vendor_enable": false,
+    "product_tags_enable": false,
+    "product_sorting_enable": false,
+    "products_featured_collection": "",
+    "cart_notes_enable": true,
+    "cart_enable_ajax": true,
+    "social_facebook_link": "",
+    "social_twitter_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_google_plus_link": "",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "social_fancy_link": "",
+    "social_sharing_products": true,
+    "social_sharing_blog": true,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "share_fancy": true,
+    "share_google": true,
+    "checkout_header_image": "",
+    "checkout_use_storefront_logo": false,
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#006eff",
+    "checkout_button_color": "#006eff",
+    "checkout_error_color": "#ff6d6d",
+    "checkout_use_header_image": false,
+    "checkout_logo": "",
+    "checkout_use_body_background_image": false,
+    "checkout_use_sidebar_background_image": false,
+    "checkout_banner_background_color": "#fff",
+    "checkout_call_to_action_color": "#006eff",
+    "content_for_index": []
   },
   "presets": {
     "Snowboards": {
+      "cart_notes_enable": true,
+      "cart_enable_ajax": true,
       "checkout_accent_color": "#006eff",
       "checkout_banner_background_color": "#fff",
       "checkout_button_color": "#006eff",
@@ -126,6 +139,9 @@
       "color_button_bg": "#006eff",
       "color_button_text": "#fff",
       "color_content_bg": "#fff",
+      "color_featured_collection_bg": "rgba(0,0,0,0)",
+      "color_featured_collection_links": "#006eff",
+      "color_featured_collection_text": "#1a1a1a",
       "color_footer_bg": "#030303",
       "color_footer_text": "#fff",
       "color_header_bg": "#030303",
@@ -133,6 +149,28 @@
       "color_hero_bg": "#006eff",
       "color_hero_text": "#fff",
       "color_newsletter_input": "#1a1a1a",
+      "featured_collections_enable": true,
+      "featured_products_enable": true,
+      "footer_linklist_1": "footer",
+      "footer_newsletter_enable": true,
+      "hero_enable": true,
+      "hero_slide_1_enable": true,
+      "hero_slide_1_heading": "Welcome to the shop",
+      "hero_slide_1_cta": "Browse all products",
+      "hero_slide_1_link": "\/collections\/all",
+      "logo_use_image": false,
+      "product_images_padding": true,
+      "product_sorting_enable": true,
+      "product_stock_enable": true,
+      "product_tags_enable": true,
+      "products_featured_collection": "frontpage",
+      "share_facebook": true,
+      "share_fancy": true,
+      "share_google": true,
+      "share_pinterest": true,
+      "share_twitter": true,
+      "social_sharing_blog": true,
+      "social_sharing_products": true,
       "type_accent_bold": false,
       "type_accent_family": "Google_Unica+One_400_sans",
       "type_accent_spacing": true,
@@ -141,98 +179,15 @@
       "type_base_size": "16px",
       "type_nav_size": "14px",
       "type_nav_spacing": true,
-      "type_nav_transform": true,
-      "sections": {
-        "slideshow": {
-          "type": "slideshow",
-          "blocks": {
-            "placeholder": {
-              "type": "slide",
-              "settings": {}
-            }
-          },
-          "block_order": [
-            "placeholder"
-          ],
-          "settings": {}
-        },
-        "footer": {
-          "type": "footer",
-          "blocks": {
-            "linklist": {
-              "type": "menu",
-              "settings": {}
-            },
-            "social": {
-              "type": "social",
-              "settings": {}
-            }
-          },
-          "block_order": [
-            "linklist",
-            "social"
-          ],
-          "settings": {}
-        },
-        "featured-collections": {
-          "type": "featured-collections",
-          "blocks": {
-            "featured-collections-0": {
-              "type": "collection",
-              "settings": {}
-            },
-            "featured-collections-1": {
-              "type": "collection",
-              "settings": {}
-            },
-            "featured-collections-2": {
-              "type": "collection",
-              "settings": {}
-            }
-          },
-          "block_order": [
-            "featured-collections-0",
-            "featured-collections-1",
-            "featured-collections-2"
-          ],
-          "settings": {}
-        },
-        "featured-products": {
-          "type": "featured-products",
-          "settings": {
-            "collection": "frontpage"
-          }
-        },
-        "image-content": {
-          "type": "image-content",
-          "blocks": {
-            "image-content-0": {
-              "type": "image_block",
-              "settings": {}
-            },
-            "image-content-1": {
-              "type": "text_block",
-              "settings": {}
-            }
-          },
-          "block_order": [
-            "image-content-0",
-            "image-content-1"
-          ],
-          "settings": {}
-        }
-      },
-      "content_for_index": [
-        "featured-collections",
-        "featured-products",
-        "image-content"
-      ]
+      "type_nav_transform": true
     },
     "Outdoors": {
-      "checkout_accent_color": "#f4743c",
+      "cart_notes_enable": true,
+      "cart_enable_ajax": true,
+      "checkout_accent_color": "#c04f1d",
       "checkout_banner_background_color": "#fff",
-      "checkout_button_color": "#f4743c",
-      "checkout_call_to_action_color": "#f4743c",
+      "checkout_button_color": "#c04f1d",
+      "checkout_call_to_action_color": "#c04f1d",
       "checkout_use_header_image": false,
       "color_body_bg": "#f7f7f7",
       "color_body_headings": "#1a1a1a",
@@ -240,13 +195,38 @@
       "color_button_bg": "#c04f1d",
       "color_button_text": "#fff",
       "color_content_bg": "#ffffff",
+      "color_featured_collection_bg": "#213236",
+      "color_featured_collection_links": "#c04f1d",
+      "color_featured_collection_text": "#fff",
       "color_footer_bg": "#213236",
       "color_footer_text": "#fff",
       "color_header_bg": "#213236",
       "color_header_links": "#ffffff",
-      "color_hero_bg": "#f4743c",
+      "color_hero_bg": "#c04f1d",
       "color_hero_text": "#fff",
       "color_newsletter_input": "#425154",
+      "featured_collections_enable": true,
+      "featured_products_enable": true,
+      "footer_linklist_1": "footer",
+      "footer_newsletter_enable": true,
+      "hero_enable": true,
+      "hero_slide_1_enable": true,
+      "hero_slide_1_heading": "Welcome to the shop",
+      "hero_slide_1_cta": "Browse all products",
+      "hero_slide_1_link": "\/collections\/all",
+      "logo_use_image": false,
+      "product_images_padding": true,
+      "product_sorting_enable": true,
+      "product_stock_enable": true,
+      "product_tags_enable": true,
+      "products_featured_collection": "frontpage",
+      "share_facebook": true,
+      "share_fancy": true,
+      "share_google": true,
+      "share_pinterest": true,
+      "share_twitter": true,
+      "social_sharing_blog": true,
+      "social_sharing_products": true,
       "type_accent_bold": true,
       "type_accent_family": "Google_Lora_400_serif",
       "type_accent_spacing": false,
@@ -258,6 +238,8 @@
       "type_nav_transform": false
     },
     "Boxing": {
+      "cart_notes_enable": true,
+      "cart_enable_ajax": true,
       "checkout_accent_color": "#d8232f",
       "checkout_banner_background_color": "#fff",
       "checkout_button_color": "#d8232f",
@@ -269,6 +251,9 @@
       "color_button_bg": "#d8232f",
       "color_button_text": "#fff",
       "color_content_bg": "#ffffff",
+      "color_featured_collection_bg": "rgba(0,0,0,0)",
+      "color_featured_collection_links": "#d8232f",
+      "color_featured_collection_text": "#222222",
       "color_footer_bg": "#222222",
       "color_footer_text": "#ffffff",
       "color_header_bg": "#222222",
@@ -276,6 +261,28 @@
       "color_hero_bg": "#d8232f",
       "color_hero_text": "#fff",
       "color_newsletter_input": "#303030",
+      "featured_collections_enable": true,
+      "featured_products_enable": true,
+      "footer_linklist_1": "footer",
+      "footer_newsletter_enable": true,
+      "hero_enable": true,
+      "hero_slide_1_enable": true,
+      "hero_slide_1_heading": "Welcome to the shop",
+      "hero_slide_1_cta": "Browse all products",
+      "hero_slide_1_link": "\/collections\/all",
+      "logo_use_image": false,
+      "product_images_padding": true,
+      "product_sorting_enable": true,
+      "product_stock_enable": true,
+      "product_tags_enable": true,
+      "products_featured_collection": "frontpage",
+      "share_facebook": true,
+      "share_fancy": true,
+      "share_google": true,
+      "share_pinterest": true,
+      "share_twitter": true,
+      "social_sharing_blog": true,
+      "social_sharing_products": true,
       "type_accent_bold": true,
       "type_accent_family": "Google_Open+Sans+Condensed_400_sans",
       "type_accent_spacing": false,
