@@ -1,4 +1,4 @@
-<!-- /snippets/comment.liquid -->
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<!-- /snippets/comment.liquid -->
 {% comment %}
 
   This snippet generates the structure of a comment.
@@ -12,8 +12,8 @@
 <p>
   <span class="h6">{{ comment.author }}</span>
 
-  <small>{{ comment.created_at | time_tag: format: 'month_day_year' }}</small>
+  <small><time datetime="{{ comment.created_at | date: '%Y-%m-%d' }}">{{ comment.created_at | date: format: 'month_day_year' }}</time></small>
 </p>
 <div class="comment__content rte">
-  {{ comment.content }}
+  {% comment %}ly_code_replace_for_[ comment.content ]_begin{% endcomment %}{% include 'ly-content' with comment %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
 </div>

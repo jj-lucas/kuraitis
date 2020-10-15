@@ -76,6 +76,7 @@
               <span id="ProductPrice" class="product-single__price" itemprop="price">
                 {% assign geolizr_price =  current_variant.price  %}{% include 'geolizr-currency' with geolizr_price %}<span class="Bold-theme-hook-DO-NOT-DELETE bold_product_price" data-override-value-set="1" data-override-value="{{ current_variant.price }}" style="display:none !important;"></span>{{ current_variant.price | money_without_trailing_zeros | prepend: geolizr_prepend_code | append: geolizr_append_code }}
               </span>
+              <span id="ProductShipping">Gratis levering i Danmark</span>
             </li>
             {% if product.compare_at_price_max > product.price %}
               <li>
@@ -95,13 +96,15 @@
         </div>
 
         <hr>
-        <!--<small style="background: #ffffcc;     font-size: 11px;     line-height: 16px;     display: inline-block;    padding: 11px;">Jeg holder snart juleferie, og kan ikke modtage flere ordre efter onsdag den 13 december.  Februar næste år er jeg klar til at sende jeres orde igen.<br>
+        <!--
+        <small style="background: #ffffcc;     font-size: 11px;     line-height: 16px;     display: inline-block;    padding: 11px;">Jeg holder snart juleferie, og kan derfor ikke modtage flere ordre efter onsdag den 25 december, fra uge 2 i det nye år er jeg klar til at sende jeres ordre igen.<br>
 Mange tak for jeres forståelse.<br>
 Jeg ønsker jer en Glædelig Jul samt et Godt Nytår.<br>-------------------------------<br>
 
-Please note: I will soon be leaving for Christmas holiday, and because of that any order made after Wednesday the 13th of December won't be shipped until February next year. I shall restart shipping your orders upon my return.<br>
+Please note: I will soon be leaving for Christmas holiday, and because of that any order made after Wednesday the 25th of December won't be shipped until the second week of January. I shall restart shipping your orders upon my return.<br>
 Thank you for your understanding, I wish you all a merry Christmas and a happy new year.<br>
-- Sergio</small>-->
+- Sergio</small>
+-->
 
         <form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form" id="AddToCartForm">
           <select name="id" id="ProductSelect" class="product-form__variants">

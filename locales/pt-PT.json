@@ -14,23 +14,27 @@
       "404_link": "Continue comprando"
     },
     "password_page": {
+      "opening_soon": "Abre Brevemente",
+      "spread_the_word": "Passe a palavra",
       "login_form_heading": "Entre na loja usando a palavra-passe",
       "login_form_password_label": "Palavra-passe",
       "login_form_password_placeholder": "A sua palavra-passe",
       "login_form_submit": "Entrar",
+      "signup_form_heading": "Descubra quando abrimos",
       "signup_form_email_label": "Email",
+      "signup_form_email_placeholder": "O seu email",
+      "signup_form_submit": "Submeter",
       "signup_form_success": "Iremos enviar-lhe um email imediatamente antes de abrirmos!",
       "admin_link_html": "É o dono da loja? <a href=\"\/admin\" class=\"text-link\">Inicie sessão aqui<\/a>",
       "password_link": "Entre usando a palavra-passe",
       "powered_by_shopify_html": "Esta loja será movida por {{ shopify }}"
     },
     "social": {
-      "share_title": "Partilhar",
-      "alt_text": {
-        "share_on_facebook": "Partilhe no Facebook",
-        "share_on_twitter": "Tuíte no Twitter",
-        "share_on_pinterest": "Adicione no Pinterest"
-      }
+      "share_on_facebook": "Partilhar",
+      "share_on_twitter": "Tweet",
+      "share_on_pinterest": "Pin it",
+      "share_on_fancy": "Fancy",
+      "share_title": "Partilhar"
     },
     "newsletter_form": {
       "newsletter_heading": "Esteja por dentro",
@@ -61,7 +65,6 @@
   "blogs": {
     "article": {
       "tags": "Etiquetas",
-      "view_all": "Ver todo",
       "all_tags": "Tudo",
       "read_more": "Ler mais",
       "back_to_blog": "Regressar a {{ title }}"
@@ -84,13 +87,11 @@
   "cart": {
     "general": {
       "title": "Carrinho de Compras",
-      "remove": "Eliminar",
       "note": "Instruções especiais para o vendedor",
       "shipping_at_checkout": "Envios e descontos calculados no checkout",
       "update": "Atualizar Carrinho de Compras",
       "checkout": "Check-Out",
       "empty": "O seu carrinho de compras está neste momento vazio.",
-      "cookies_required": "Ative cookies para poder usar o carrinho de compras",
       "continue_browsing": "Continue a ver aqui",
       "close_notification": "Encerrar",
       "savings_html": "Está a poupar {{ price }}"
@@ -98,22 +99,27 @@
     "label": {
       "product": "Produto",
       "quantity": "Quantidade",
-      "decrease_quantity": "Reduza a quantidade do artigo em um",
-      "increase_quantity": "Aumente a quantidade do artigo em um",
+      "increase_quantity": "Aumentar a quantidade",
+      "decrease_quantity": "Diminuir a quantidade",
       "total": "Total"
     }
   },
   "collections": {
     "general": {
       "view_all": "Ver todo",
-      "all_of_collection": "Tudo",
+      "all_of_collection": "Toda a {{ collection }}",
       "no_matches": "Lamentamos, mas nenhum produto corresponde à sua pesquisa.",
       "link_title": "Explorar a nossa coleção {{ title }}"
+    },
+    "onboarding": {
+      "modal_title": "Esta página irá exibir todos os produtos da sua loja",
+      "no_products_html": "Ainda não há artigos, mas assim que começar a adicioná-los, eles vão surgir aqui, mesmo se não estiverem inseridos numa colecção.",
+      "add_product": "Adicionar Produto"
     },
     "sorting": {
       "title": "Ordenar por",
       "title_tags": "Filtrar por",
-      "all_of_collection": "Tudo",
+      "all_of_collection": "Todos de {{ collection }}",
       "featured": "Em Destaque",
       "best_selling": "Mais Vendidos",
       "az": "Alfabeticamente, A-Z",
@@ -178,6 +184,7 @@
       "password": "Senha",
       "forgot_password": "Esqueceu-se da sua senha?",
       "sign_in": "Iniciar Sessão",
+      "cancel": "Regressar à Loja",
       "guest_title": "Continuar como visitante",
       "guest_continue": "Continuar"
     },
@@ -208,8 +215,7 @@
       "quantity": "Quantidade",
       "total": "Total",
       "fulfilled_at": "Concluído em {{ date }}",
-      "subtotal": "Subtotal",
-      "track_shipment": "Acompanhar envio"
+      "subtotal": "Subtotal"
     },
     "recover_password": {
       "title": "Repor a sua senha",
@@ -232,7 +238,8 @@
       "last_name": "Sobrenome",
       "email": "Email",
       "password": "Senha",
-      "submit": "Criar"
+      "submit": "Criar",
+      "cancel": "Regressar à Loja"
     }
   },
   "homepage": {
@@ -243,10 +250,12 @@
       "play_slideshow": "Reproduzir apresentação de slides"
     },
     "onboarding": {
-      "blog_title": "O título do seu post",
+      "modal_title": "Quase lá...",
+      "no_featured_products_html": "Crie ou seleccione as suas <a href=\"\/admin\/collections\"> colecções personalizadas<\/a> em definições de tema, para aí apresentar produtos em destaque.",
       "product_title": "Título do Produto Exemplo",
-      "collection_title": "Título da Coleção",
-      "no_content": "Esta sección actualmente no incluye ningún contenido. Añade un contenido a esta sección utilizando la barra lateral."
+      "no_collections_html": "Defina até seis coleções nas definições em tema para dispor delas aqui. Ainda não tem coleções para exibir aqui. <a href=\"\/admin\/collections\">Adicione algumas coleções<\/a> para continuar com a Frontpage predefinida.",
+      "add_collection": "Adicionar uma coleção",
+      "collection_title": "Título da Coleção"
     }
   },
   "layout": {
@@ -262,7 +271,8 @@
       "featured_products": "Produtos em destaque"
     },
     "footer": {
-      "social_platform": "{{ name }} na {{ plataform }}"
+      "social_platform": "{{ name }} na {{ plataform }}",
+      "footer_line": "CVR: 32220649 | Ulleruphusevej 12, 7900 Nykøbing Mors  | Tlf.: 60608617 | sergio@kuraitis.dk"
     }
   },
   "products": {
@@ -279,10 +289,7 @@
       "quantity": "Quantidade",
       "add_to_cart": "Adicionar ao Carrinho de Compras",
       "view": "Ver produto",
-      "stock_available": {
-        "one": "Só restam {{ count }}!",
-        "other": "Só restam {{ count }}!"
-      },
+      "stock_available": "Só restam {{ count }}!",
       "collection_return": "Regressar à {{ collection }}",
       "product_added_to_cart_html": "Item adicionado ao carrinho de compras. <span>Ver carrinho de compras e fazer check-out<\/span>.",
       "stock_unavailable": "Não foi possível adicionar o item ao seu carrinho, porque não existem itens suficientes em stock."
@@ -304,18 +311,5 @@
   },
   "date_formats": {
     "month_day_year": "%d de %B de %Y"
-  },
-  "sections": {
-    "map": {
-      "get_directions": "Obter direções",
-      "address_error": "Não é possível localizar o endereço",
-      "address_no_results": "Nenhum resultado para este endereço",
-      "address_query_limit_html": "Você excedeu a cota de uso da API do Google. Considere a atualização para um <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Plano Premium<\/a>.",
-      "auth_error_html": "Houve um problema autenticação de sua conta do Google Maps API."
-    }
-  },
-  "video": {
-    "play": "Iniciar o vídeo",
-    "close": "Parar o vídeo"
   }
 }

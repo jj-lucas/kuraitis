@@ -1,8 +1,14 @@
 /*============================================================================
   Venture by Shopify
+
+  Some things to know about this file:
+    - Sass is compiled on Shopify's server so you don't need to convert it to CSS yourself
+    - The output CSS is compressed and comments are removed
+    - You cannot use native CSS/Sass @imports in this file without a build script
+    - The font icons are prepared using https://icomoon.io/app
 ==============================================================================*/
 
-/*================ SASS HELPERS ================*/
+/*================ FUNCTIONS ================*/
 /*============================================================================
   Convert pixels to ems
 
@@ -37,163 +43,26 @@
   @return ($value / ($value * 0 + 1));
 }
 
-
-/*================ THEME SASS HELPERS ================*/
 @function adaptive-color($color, $percentage) {
-  @if (lightness($color) > 40) {
+  @if (lightness( $color ) > 40) {
     @return darken($color, $percentage);
-  } @else {
+  }
+  @else {
     @return lighten($color, $percentage);
   }
 }
 
 @function color-control($color) {
-  @if (lightness($color) > 40) {
+  @if (lightness( $color ) > 40) {
     @return #1c1d1d;
-  } @else {
+  }
+  @else {
     @return #fff;
   }
 }
 
-/*================ Prefix mixins ================*/
-@mixin transform($transform) {
-  @include prefix(transform, #{$transform}, ms webkit spec);
-}
 
-@mixin animation($animation) {
-  @include prefix(animation, #{$animation}, moz o webkit spec);
-}
-
-@mixin keyframes($name) {
-  @-webkit-keyframes #{$name} {
-    @content;
-  }
-  @-moz-keyframes #{$name} {
-    @content;
-  }
-  @-ms-keyframes #{$name} {
-    @content;
-  }
-  @keyframes #{$name} {
-    @content;
-  }
-}
-
-@mixin backface($visibility: hidden) {
-  @include prefix(backface-visibility, #{$visibility}, webkit spec);
-}
-
-/*============================================================================
-  Flexbox prefix mixins from Bourbon
-    https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_flex-box.scss
-==============================================================================*/
-@mixin display-flexbox() {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%; // necessary for ie10
-}
-
-@mixin flex-wrap($value: nowrap) {
-  @include prefix(flex-wrap, $value, webkit moz ms spec);
-}
-
-@mixin flex-direction($value: row) {
-  @include prefix(flex-direction, $value, webkit spec);
-}
-
-@mixin align-items($value: stretch) {
-  // sass-lint:disable no-misspelled-properties
-  $alt-value: $value;
-
-  @if $value == "flex-start" {
-    $alt-value: start;
-  } @else if $value == "flex-end" {
-    $alt-value: end;
-  }
-
-  -ms-flex-align: $alt-value;
-  @include prefix(align-items, $value, webkit moz ms o spec);
-}
-
-@mixin flex($value) {
-  @include prefix(flex, $value, webkit moz ms spec);
-}
-
-@mixin flex-basis($width: auto) {
-  -ms-flex-preferred-size: $width;
-  @include prefix(flex-basis, $width, webkit moz spec);
-}
-
-@mixin align-self($align: auto) {
-  -ms-flex-item-align: $align;
-  @include prefix(align-self, $align, webkit spec);
-}
-
-/*================ Style mixins ================*/
-@mixin accent-text() {
-  font-family: $font-stack-accent;
-  @if $type-accent-bold {
-    font-weight: $font-weight-bold;
-  } @else {
-    font-weight: $font-weight-normal;
-  }
-  @if $type-accent-spacing {
-    letter-spacing: 0.1em;
-  }
-  @if $type-accent-transform {
-    text-transform: uppercase;
-  }
-}
-
-@mixin button-text-style() {
-  font-size: $font-size-button;
-  font-weight: $font-weight-bold;
-  @if $type-nav-spacing {
-    letter-spacing: 0.15em;
-  }
-  @if $type-nav-transform {
-    text-transform: uppercase;
-  }
-}
-
-@mixin nav-text-style() {
-  font-size: $font-size-nav;
-  font-weight: $font-weight-bold;
-  @if $type-nav-spacing {
-    letter-spacing: 0.6px;
-  }
-  @if $type-nav-transform {
-    text-transform: uppercase;
-  }
-}
-
-@mixin placeholder-text() {
-  color: $color-body-text;
-  opacity: 0.6;
-}
-
-@mixin error-placeholder-text() {
-  color: $color-error-input-text;
-  opacity: 0.6;
-}
-
-@mixin header-placeholder-text() {
-  color: $color-header-links;
-  opacity: 0.6;
-}
-
-@mixin footer-placeholder-text() {
-  color: $color-footer-text;
-  opacity: 0.8;
-}
-
-@mixin opacity-placeholder-text() {
-  opacity: 1;
-}
-
-
-/*================ SASS VARIABLES & SETTINGS ================*/
+/*================ VARIABLES ================*/
 /*============================================================================
   Grid Breakpoints and Class Names
     - Do not change the variable names
@@ -250,17 +119,11 @@ $color-heading: {{ settings.color_body_headings }};
 $color-header: {{ settings.color_header_bg }};
 $color-header-border: adaptive-color($color-header, 5%);
 $color-header-links: {{ settings.color_header_links }};
-$color-header-links-rgba: rgba($color-header-links, 0.6);
 $color-footer: {{ settings.color_footer_bg }};
 $color-footer-text: {{ settings.color_footer_text }};
-$color-footer-text-rgba: rgba({{ settings.color_footer_text }}, 0.6);
 $color-footer-border: adaptive-color($color-footer, 5%);
-
-// Emphasized title blocks (like hero slider)
-$color-emphasized-title-bg: {{ settings.color_hero_bg }};
-$color-emphasized-title-text: {{ settings.color_hero_text }};
-$color-emphasized-subtitle-bg: $color-header;
-$color-emphasized-subtitle-text: $color-header-links;
+$color-footer-newsletter: {{ settings.color_newsletter_input }};
+$color-footer-newsletter-text: color-control($color-footer-newsletter);
 
 // Hero
 $color-hero-title-bg: {{ settings.color_hero_bg }};
@@ -271,10 +134,6 @@ $color-hero-arrows: #000;
 $color-hero-dots: #000;
 $color-hero-dots-active: #fff;
 
-// General
-$color-fixed-white: #fff;
-$color-fixed-black: #000;
-
 // Password page
 $color-password-bg: $color-header;
 $color-password-text: color-control($color-password-bg);
@@ -284,8 +143,6 @@ $color-password-links: $color-header-links;
 $color-giftcard-text: #fff;
 $color-giftcard-code-bg: $color-content;
 $color-giftcard-code-text: $color-body-text;
-$color-giftcard-border: rgba(0, 0, 0, 0.1);
-$color-giftcard-shadow: rgba(0, 0, 0, 0.05);
 $giftcard-code-border-radius: 4px;
 $giftcard-image-border-radius: 12px;
 
@@ -298,9 +155,9 @@ $input-group-height: 48px;
 $width-qty-btn: 30px;
 
 // Featured collections
-$color-featured-collection-text: $color-heading;
-$color-featured-collection-bg: $color-content;
-$color-featured-collection-link: $color-accent;
+$color-featured-collection-text: {{ settings.color_featured_collection_text }};
+$color-featured-collection-bg: {{ settings.color_featured_collection_bg }};
+$color-featured-collection-link: {{ settings.color_featured_collection_links }};
 
 // Collection card
 $color-collection-card-overlay: #000;
@@ -309,7 +166,6 @@ $color-collection-card-text: #fff;
 // Helper colors for form error states
 $color-disabled: darken($color-form, 12%);
 $color-disabled-border: adaptive-color($color-form, 50%);
-$color-disabled-text: rgba(0, 0, 0, 0.4);
 $color-error: #ec523e;
 $color-error-bg: #ec523e;
 $color-error-input-text: #fff;
@@ -320,6 +176,7 @@ $color-success-bg: #59ac6c;
 $width-site: 1180px;
 $gutter-site: 20px;
 $gutter-heading: 20px;
+$logo-max-width: {{ settings.logo_max_width | default: '450' | remove: 'px' | append: 'px'}};
 
 /*================ Product Grid ================*/
 {% if settings.product_vendor_enable %}
@@ -374,38 +231,6 @@ $font-size-button: em({{ settings.type_nav_size }} - 1);
 $font-weight-normal: 400;
 $font-weight-bold: 700;
 
-// Header type settings
-{% if settings.type_accent_spacing %}
-  $type-accent-spacing: true;
-{% else %}
-  $type-accent-spacing: false;
-{% endif %}
-
-{% if settings.type_accent_transform %}
-  $type-accent-transform: true;
-{% else %}
-  $type-accent-transform: false;
-{% endif %}
-
-{% if settings.type_accent_bold %}
-  $type-accent-bold: true;
-{% else %}
-  $type-accent-bold: false;
-{% endif %}
-
-// Nav type settings
-{% if settings.type_nav_spacing %}
-  $type-nav-spacing: true;
-{% else %}
-  $type-nav-spacing: false;
-{% endif %}
-
-{% if settings.type_nav_transform %}
-  $type-nav-transform: true;
-{% else %}
-  $type-nav-transform: false;
-{% endif %}
-
 /*================ Z-Index ================*/
 $z-index-dropdown: 5;
 $z-index-product-card: 1;
@@ -420,8 +245,6 @@ $z-index-nav-links: 7; // must be at least 2 higher than dropdown
 $z-index-notification: 4;
 $z-index-modal: 15;
 $z-index-skip-to-content: 10000;
-$z-index-video-overlay: 15;
-$z-index-video-content: 16;
 
 /*================ Drawers ================*/
 $drawer-width: 300px;
@@ -431,7 +254,6 @@ $drawer-content-transition-close: all 0.35s cubic-bezier(0.33, 0.59, 0.14, 1);
 $color-drawer: $color-content;
 $color-drawer-sublist: $color-body;
 $color-drawer-text: darken($color-body-text, 25%);
-$color-drawer-shadow: rgba(0, 0, 0, 0.1);
 $drawer-link-size: em(26);
 
 /*================ Sticky nav ================*/
@@ -442,7 +264,6 @@ $link-transition: color 0.1s ease-in, background-color 0.1s ease-in;
 $button-transition: color 0.1s ease-in, background-color 0.1s ease-in;
 
 /*================ Product and Collection Cards ================*/
-$color-product-card-overlay: rgba(0, 0, 0, 0.06);
 $product-card-transition: all 0.15s ease-in;
 $collection-bard-transition: opacity 0.15s ease-in;
 
@@ -462,9 +283,9 @@ $hero-link-transition: background-color 0.15s ease-in;
 $hero-image-transition: opacity 0.8s cubic-bezier(0.44, 0.13, 0.48, 0.87);
 
 
-/*================ Slate ================*/
+/*================ CANVAS ================*/
 /*============================================================================
-  Slate Table of Contents
+  Canvas Table of Contents
 
   #Mixins
   #Grid
@@ -556,13 +377,6 @@ $hero-image-transition: opacity 0.8s cubic-bezier(0.44, 0.13, 0.48, 0.87);
   }
 }
 
-/*================ Media Query IE z-index Mixin ================*/
-@mixin media-query-ie-z-index($z-index) {
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    z-index: $z-index;
-  }
-}
-
 /*================ Responsive Show/Hide Helper ================*/
 @mixin responsive-display-helper($grid-breakpoint-type:"") {
   .#{$grid-breakpoint-type}show {
@@ -612,7 +426,6 @@ $grid-breakpoints: (
     2. Remove any margins and paddings that might affect the grid system.
     3. Apply a negative `margin-left` to negate the columns' gutters.
 ==============================================================================*/
-// Floated grid
 .grid {
   @include clearfix();
 }
@@ -628,27 +441,25 @@ $grid-breakpoints: (
   float: left;
   padding-left: $grid-gutter;
   width: 100%;
-  @include flex-basis(auto!important);
 }
 
 .grid__item[class*="--push"] {
-  position: relative;
+  position:relative;
 }
 
-/*================ Flex grid ================*/
-.flex {
-  @include display-flexbox();
-}
+/*============================================================================
+  Reversed grids allow you to structure your source in the opposite
+  order to how your rendered layout will appear.
+==============================================================================*/
+.grid--rev {
+  direction: rtl;
+  text-align: left;
 
-.flex__item {
-  position: relative;
-  @include flex(1 1 100%);
-  width: auto!important;
-  min-width: 0; // Firefox fix
-}
-
-.flex__item--fixed {
-  @include flex(0 1 auto);
+  > .grid__item {
+    direction: ltr;
+    text-align: left;
+    float: right;
+  }
 }
 
 /*============================================================================
@@ -657,65 +468,65 @@ $grid-breakpoints: (
 ==============================================================================*/
 @mixin grid-column-generator($grid-breakpoint-type:"") {
   /** Whole */
-  .#{$grid-breakpoint-type}one-whole       { width: 100%; @include flex-basis(100%); }
+  .#{$grid-breakpoint-type}one-whole       { width: 100%; }
 
   /* Halves */
-  .#{$grid-breakpoint-type}one-half        { width: percentage(1/2); @include flex-basis(percentage(1/2)); }
+  .#{$grid-breakpoint-type}one-half        { width: percentage(1/2); }
 
   /* Thirds */
-  .#{$grid-breakpoint-type}one-third       { width: percentage(1/3); @include flex-basis(percentage(1/3)); }
-  .#{$grid-breakpoint-type}two-thirds      { width: percentage(2/3); @include flex-basis(percentage(2/3)); }
+  .#{$grid-breakpoint-type}one-third       { width: percentage(1/3); }
+  .#{$grid-breakpoint-type}two-thirds      { width: percentage(2/3); }
 
   /* Quarters */
-  .#{$grid-breakpoint-type}one-quarter     { width: percentage(1/4); @include flex-basis(percentage(1/4)); }
-  .#{$grid-breakpoint-type}two-quarters    { width: percentage(2/4); @include flex-basis(percentage(2/4)); }
-  .#{$grid-breakpoint-type}three-quarters  { width: percentage(3/4); @include flex-basis(percentage(3/4)); }
+  .#{$grid-breakpoint-type}one-quarter     { width: percentage(1/4); }
+  .#{$grid-breakpoint-type}two-quarters    { width: percentage(2/4); }
+  .#{$grid-breakpoint-type}three-quarters  { width: percentage(3/4); }
 
   /* Fifths */
-  .#{$grid-breakpoint-type}one-fifth       { width: percentage(1/5); @include flex-basis(percentage(1/5)); }
-  .#{$grid-breakpoint-type}two-fifths      { width: percentage(2/5); @include flex-basis(percentage(2/5)); }
-  .#{$grid-breakpoint-type}three-fifths    { width: percentage(3/5); @include flex-basis(percentage(3/5)); }
-  .#{$grid-breakpoint-type}four-fifths     { width: percentage(4/5); @include flex-basis(percentage(4/5)); }
+  .#{$grid-breakpoint-type}one-fifth       { width: percentage(1/5); }
+  .#{$grid-breakpoint-type}two-fifths      { width: percentage(2/5); }
+  .#{$grid-breakpoint-type}three-fifths    { width: percentage(3/5); }
+  .#{$grid-breakpoint-type}four-fifths     { width: percentage(4/5); }
 
   /* Sixths */
-  .#{$grid-breakpoint-type}one-sixth       { width: percentage(1/6); @include flex-basis(percentage(1/6)); }
-  .#{$grid-breakpoint-type}two-sixths      { width: percentage(2/6); @include flex-basis(percentage(2/6)); }
-  .#{$grid-breakpoint-type}three-sixths    { width: percentage(3/6); @include flex-basis(percentage(3/6)); }
-  .#{$grid-breakpoint-type}four-sixths     { width: percentage(4/6); @include flex-basis(percentage(4/6)); }
-  .#{$grid-breakpoint-type}five-sixths     { width: percentage(5/6); @include flex-basis(percentage(5/6)); }
+  .#{$grid-breakpoint-type}one-sixth       { width: percentage(1/6); }
+  .#{$grid-breakpoint-type}two-sixths      { width: percentage(2/6); }
+  .#{$grid-breakpoint-type}three-sixths    { width: percentage(3/6); }
+  .#{$grid-breakpoint-type}four-sixths     { width: percentage(4/6); }
+  .#{$grid-breakpoint-type}five-sixths     { width: percentage(5/6); }
 
   /* Eighths */
-  .#{$grid-breakpoint-type}one-eighth      { width: percentage(1/8); @include flex-basis(percentage(1/8)); }
-  .#{$grid-breakpoint-type}two-eighths     { width: percentage(2/8); @include flex-basis(percentage(2/8)); }
-  .#{$grid-breakpoint-type}three-eighths   { width: percentage(3/8); @include flex-basis(percentage(3/8)); }
-  .#{$grid-breakpoint-type}four-eighths    { width: percentage(4/8); @include flex-basis(percentage(4/8)); }
-  .#{$grid-breakpoint-type}five-eighths    { width: percentage(5/8); @include flex-basis(percentage(5/8)); }
-  .#{$grid-breakpoint-type}six-eighths     { width: percentage(6/8); @include flex-basis(percentage(6/8)); }
-  .#{$grid-breakpoint-type}seven-eighths   { width: percentage(7/8); @include flex-basis(percentage(7/8)); }
+  .#{$grid-breakpoint-type}one-eighth      { width: percentage(1/8); }
+  .#{$grid-breakpoint-type}two-eighths     { width: percentage(2/8); }
+  .#{$grid-breakpoint-type}three-eighths   { width: percentage(3/8); }
+  .#{$grid-breakpoint-type}four-eighths    { width: percentage(4/8); }
+  .#{$grid-breakpoint-type}five-eighths    { width: percentage(5/8); }
+  .#{$grid-breakpoint-type}six-eighths     { width: percentage(6/8); }
+  .#{$grid-breakpoint-type}seven-eighths   { width: percentage(7/8); }
 
   /* Tenths */
-  .#{$grid-breakpoint-type}one-tenth       { width: percentage(1/10); @include flex-basis(percentage(1/10)); }
-  .#{$grid-breakpoint-type}two-tenths      { width: percentage(2/10); @include flex-basis(percentage(2/10)); }
-  .#{$grid-breakpoint-type}three-tenths    { width: percentage(3/10); @include flex-basis(percentage(3/10)); }
-  .#{$grid-breakpoint-type}four-tenths     { width: percentage(4/10); @include flex-basis(percentage(4/10)); }
-  .#{$grid-breakpoint-type}five-tenths     { width: percentage(5/10); @include flex-basis(percentage(5/10)); }
-  .#{$grid-breakpoint-type}six-tenths      { width: percentage(6/10); @include flex-basis(percentage(6/10)); }
-  .#{$grid-breakpoint-type}seven-tenths    { width: percentage(7/10); @include flex-basis(percentage(7/10)); }
-  .#{$grid-breakpoint-type}eight-tenths    { width: percentage(8/10); @include flex-basis(percentage(8/10)); }
-  .#{$grid-breakpoint-type}nine-tenths     { width: percentage(9/10); @include flex-basis(percentage(9/10)); }
+  .#{$grid-breakpoint-type}one-tenth       { width: percentage(1/10); }
+  .#{$grid-breakpoint-type}two-tenths      { width: percentage(2/10); }
+  .#{$grid-breakpoint-type}three-tenths    { width: percentage(3/10); }
+  .#{$grid-breakpoint-type}four-tenths     { width: percentage(4/10); }
+  .#{$grid-breakpoint-type}five-tenths     { width: percentage(5/10); }
+  .#{$grid-breakpoint-type}six-tenths      { width: percentage(6/10); }
+  .#{$grid-breakpoint-type}seven-tenths    { width: percentage(7/10); }
+  .#{$grid-breakpoint-type}eight-tenths    { width: percentage(8/10); }
+  .#{$grid-breakpoint-type}nine-tenths     { width: percentage(9/10); }
 
   /* Twelfths */
-  .#{$grid-breakpoint-type}one-twelfth     { width: percentage(1/12); @include flex-basis(percentage(1/12)); }
-  .#{$grid-breakpoint-type}two-twelfths    { width: percentage(2/12); @include flex-basis(percentage(2/12)); }
-  .#{$grid-breakpoint-type}three-twelfths  { width: percentage(3/12); @include flex-basis(percentage(3/12)); }
-  .#{$grid-breakpoint-type}four-twelfths   { width: percentage(4/12); @include flex-basis(percentage(4/12)); }
-  .#{$grid-breakpoint-type}five-twelfths   { width: percentage(5/12); @include flex-basis(percentage(5/12)); }
-  .#{$grid-breakpoint-type}six-twelfths    { width: percentage(6/12); @include flex-basis(percentage(6/12)); }
-  .#{$grid-breakpoint-type}seven-twelfths  { width: percentage(7/12); @include flex-basis(percentage(7/12)); }
-  .#{$grid-breakpoint-type}eight-twelfths  { width: percentage(8/12); @include flex-basis(percentage(8/12)); }
-  .#{$grid-breakpoint-type}nine-twelfths   { width: percentage(9/12); @include flex-basis(percentage(9/12)); }
-  .#{$grid-breakpoint-type}ten-twelfths    { width: percentage(10/12); @include flex-basis(percentage(10/12)); }
-  .#{$grid-breakpoint-type}eleven-twelfths { width: percentage(11/12); @include flex-basis(percentage(11/12)); }
+  .#{$grid-breakpoint-type}one-twelfth     { width: percentage(1/12); }
+  .#{$grid-breakpoint-type}two-twelfths    { width: percentage(2/12); }
+  .#{$grid-breakpoint-type}three-twelfths  { width: percentage(3/12); }
+  .#{$grid-breakpoint-type}four-twelfths   { width: percentage(4/12); }
+  .#{$grid-breakpoint-type}five-twelfths   { width: percentage(5/12); }
+  .#{$grid-breakpoint-type}six-twelfths    { width: percentage(6/12); }
+  .#{$grid-breakpoint-type}seven-twelfths  { width: percentage(7/12); }
+  .#{$grid-breakpoint-type}eight-twelfths  { width: percentage(8/12); }
+  .#{$grid-breakpoint-type}nine-twelfths   { width: percentage(9/12); }
+  .#{$grid-breakpoint-type}ten-twelfths    { width: percentage(10/12); }
+  .#{$grid-breakpoint-type}eleven-twelfths { width: percentage(11/12); }
 }
 
 /*================ Grid push classes ================*/
@@ -914,18 +725,9 @@ html input[disabled] {
 }
 
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  border-style: none;
+input::-moz-focus-inner {
+  border: 0;
   padding: 0;
-}
-
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
 }
 
 input[type="search"] {
@@ -1006,6 +808,16 @@ html {
   }
 }
 
+.main-content {
+  display: block;
+  margin-top: $gutter-site;
+  padding-bottom: $gutter-site;
+
+  @include media-query($medium-up) {
+    padding-bottom: $gutter-site * 2;
+  }
+}
+
 /*================ Typography ================*/
 blockquote {
   p {
@@ -1040,19 +852,15 @@ pre {
   width: 20px;
   height: 20px;
 
-  .no-svg & {
+  .supports-no-svg & {
     display: none;
   }
-}
-
-.icon--wide {
-  width: 40px;
 }
 
 .icon__fallback-text {
   @extend .visually-hidden;
 
-  .no-svg & {
+  .supports-no-svg & {
     position: static !important;
     overflow: inherit;
     clip: none;
@@ -1082,17 +890,9 @@ symbol.icon:not(.icon--full-color) {
   @include user-select();
   cursor: default;
 
-  li {
-    margin-left: 5px;
-  }
-
   .icon {
-    height: 26px;
     width: 40px;
-  }
-
-  .icon--wide {
-    width: 55px;
+    height: 24px;
   }
 }
 
@@ -1156,7 +956,6 @@ ol {
 .rte__table-wrapper {
   max-width: 100%;
   overflow: auto;
-  // sass-lint:disable no-misspelled-properties
   -webkit-overflow-scrolling: touch;
 }
 
@@ -1432,6 +1231,7 @@ label[for] {
   img {
     display: block;
     width: 100%;
+    max-width: $logo-max-width;
   }
 }
 
@@ -1448,6 +1248,9 @@ label[for] {
 
   .icon-arrow-down {
     position: relative;
+  }
+
+  .site-nav--active > & {
   }
 }
 
@@ -1505,22 +1308,129 @@ label[for] {
 
 
 /*================ GLOBAL ================*/
-// Only show when JS is not supported
-.no-js:not(html) {
-  display: none;
+/*================ Prefix mixins ================*/
+@mixin transform($transform) {
+  @include prefix(transform, #{$transform}, ms webkit spec);
+}
 
-  .no-js & {
-    display: block;
+@mixin animation($animation) {
+  @include prefix(animation, #{$animation}, moz o webkit spec);
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
   }
 }
 
-// Only show when JS is supported
-.no-js .js {
-  display: none;
+@mixin backface($visibility: hidden) {
+  @include prefix(backface-visibility, #{$visibility}, webkit spec);
+}
+
+/*============================================================================
+  Flexbox prefix mixins from Bourbon
+    https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_flex-box.scss
+==============================================================================*/
+@mixin display-flexbox() {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin flex-wrap($value: nowrap) {
+  @include prefix(flex-wrap, $value, webkit moz ms spec);
+}
+
+@mixin align-items($value: stretch) {
+  $alt-value: $value;
+
+  @if $value == "flex-start" {
+    $alt-value: start;
+  } @else if $value == "flex-end" {
+    $alt-value: end;
+  }
+
+  -ms-flex-align: $alt-value;
+  @include prefix(align-items, $value, webkit moz ms o spec);
+}
+
+@mixin flex($value) {
+  @include prefix(flex, $value, webkit moz ms spec);
+}
+
+@mixin flex-basis($width: auto) {
+  -ms-flex-preferred-size: $width;
+  @include prefix(flex-basis, $width, webkit moz spec);
+}
+
+/*================ Style mixins ================*/
+@mixin accent-text() {
+  font-family: $font-stack-accent;
+  {% if settings.type_accent_bold %}
+    font-weight: $font-weight-bold;
+  {% else %}
+    font-weight: $font-weight-normal;
+  {% endif %}
+  {% if settings.type_accent_spacing %}
+    letter-spacing: 0.1em;
+  {% endif %}
+  {% if settings.type_accent_transform %}
+    text-transform: uppercase;
+  {% endif %}
+}
+
+@mixin button-text-style() {
+  font-size: $font-size-button;
+  font-weight: $font-weight-bold;
+  {% if settings.type_nav_spacing %}
+    letter-spacing: 0.15em;
+  {% endif %}
+  {% if settings.type_nav_transform %}
+    text-transform: uppercase;
+  {% endif %}
+}
+
+@mixin nav-text-style() {
+  font-size: $font-size-nav;
+  font-weight: $font-weight-bold;
+  {% if settings.type_nav_spacing %}
+    letter-spacing: 0.6px;
+  {% endif %}
+  {% if settings.type_nav_transform %}
+    text-transform: uppercase;
+  {% endif %}
+}
+
+@mixin placeholder-text() {
+  color: $color-body-text;
+  opacity: 0.6;
+}
+
+@mixin error-placeholder-text() {
+  color: $color-error-input-text;
+  opacity: 0.6;
+}
+
+@mixin header-placeholder-text() {
+  color: $color-header-links;
+  opacity: 0.6;
+}
+
+@mixin footer-placeholder-text() {
+  color: $color-footer-text;
+  opacity: 0.8;
 }
 
 .main-content {
-  display: block;
   margin-top: $gutter-site * 1.5;
   padding-bottom: $gutter-site * 2;
 
@@ -1528,10 +1438,10 @@ label[for] {
     margin-top: $gutter-site * 3;
     padding-bottom: $gutter-site * 4;
   }
+}
 
-  .template-index & {
-    padding-bottom: 0;
-  }
+.main-content--flush {
+  margin-top: 0;
 }
 
 .full-width {
@@ -1557,11 +1467,7 @@ hr {
   margin: $gutter-site 0;
   border-color: $color-border;
   border-style: solid;
-  border-width: 1px 0 0;
-}
-
-.hr--dark {
-  border-color: darken($color-body, 15%);
+  border-width: 1px 0 0 0;
 }
 
 /*================ Empty pages (404, cart) ================*/
@@ -1572,43 +1478,21 @@ hr {
 
 /*================ Index sections ================*/
 .index-section {
-  margin-bottom: $gutter-site * 2.5;
+  position: relative;
+  margin-bottom: $gutter-site * 1.5;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
-.index-section--flush + .index-section--flush {
-  margin-top: -($gutter-site * 2.5);
-}
-
-.index-section--flush:last-child {
-  padding-bottom: 0;
+.index-section--page-content {
+  margin-top: 50px;
   margin-bottom: 0;
-}
 
-/*================ Flex class helpers ================*/
-.flex--center-vertical {
-  .flex__item {
-    @include align-self(center);
-  }
-}
-
-.flex--grid {
-  margin: 0 (-$grid-gutter / 2);
-  @include flex-wrap(wrap);
-
-  > .flex__item {
-    padding: $grid-gutter / 2;
-  }
-}
-
-.flex--grid-center {
-  justify-content: center;
-}
-
-.flex--no-gutter {
-  margin: 0;
-
-  > .flex__item {
-    padding: 0;
+  @include media-query($medium-up) {
+    margin-top: $gutter-site * 4;
+    margin-bottom: $gutter-site * 4;
   }
 }
 
@@ -1700,10 +1584,6 @@ h6 {
     text-decoration: none;
     font-weight: inherit;
   }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
 }
 
 h2,
@@ -1737,12 +1617,12 @@ h3 {
 
 h4 {
   font-size: em(18);
-  @if $type-accent-spacing {
+  {% if settings.type_accent_spacing %}
     letter-spacing: 1.2px;
-  }
-  @if $type-accent-transform {
+  {% endif %}
+  {% if settings.type_accent_transform %}
     text-transform: uppercase;
-  }
+  {% endif %}
 }
 
 h5 {
@@ -1755,11 +1635,6 @@ h6 {
 
 .h1 {
   @extend h1;
-}
-
-.h1--mini {
-  @extend h1;
-  font-size: em(28);
 }
 
 .h2 {
@@ -1819,15 +1694,6 @@ h6 {
   }
 }
 
-// rte setting type to act like a <p> tag
-.rte-setting {
-  margin-bottom: ($gutter-site / 2);
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
 /*================ Paragraph styles ================*/
 p {
   margin: 0 0 ($gutter-site / 2);
@@ -1845,10 +1711,8 @@ blockquote {
   text-align: center;
 
   cite {
-    font-size: 0.8em;
+    font-size: 0.85em;
     font-weight: $font-weight-normal;
-    opacity: 0.6;
-    font-style: normal;
   }
 
   @include media-query($small) {
@@ -1888,62 +1752,15 @@ label {
   vertical-align: baseline;
 }
 
-/*================ Primary color inline background ================*/
-.emphasized-title {
-  position: relative;
-  display: inline;
-  font-size: em(36);
-  line-height: 1;
-  padding: 0 ($gutter-site / 2);
-  background-color: $color-emphasized-title-bg;
-  color: $color-emphasized-title-text;
-  @include prefix(box-decoration-break, clone, webkit o spec);
-}
-
-.emphasized-title--link {
-  &:hover,
-  &:focus {
-    background-color: adaptive-color($color-emphasized-title-bg, 10%);
-    color: $color-emphasized-title-text;
-  }
-}
-
-@include media-query($medium-up) {
-  .emphasized-title--large {
-    font-size: em(60);
-  }
-}
-
-.emphasized-subtitle {
-  display: inline;
-  line-height: 2;
-  padding: $gutter-site / 2;
-  background-color: $color-emphasized-subtitle-bg;
-  color: $color-emphasized-subtitle-text;
-  @include prefix(box-decoration-break, clone, webkit o spec);
-  transition: background-color 0.15s ease-in;
-
-  @include media-query($medium-up) {
-    font-size: em(20);
-  }
-
-  &:hover,
-  &:focus {
-    color: $color-emphasized-subtitle-text;
-    background-color: adaptive-color($color-emphasized-subtitle-bg, 10%);
-  }
-}
-
-.emphasized-title-wrapper {
-  margin-bottom: 8px;
-}
-
 /*================ Tables ================*/
+table {
+  background-color: $color-body;
+}
 
 td,
 th {
   padding: $gutter-site / 2;
-  border: 1px solid $color-body;
+  border: 1px solid $color-content;
 }
 
 /*================ Forms and inputs ================*/
@@ -1959,11 +1776,6 @@ th {
   @include placeholder-text();
 }
 
-::-ms-input-placeholder {
-  @include placeholder-text();
-  @include opacity-placeholder-text();
-}
-
 input,
 textarea,
 select {
@@ -1973,7 +1785,7 @@ select {
   max-width: 100%;
 
   &[disabled] {
-    color: $color-disabled-text;
+    color: rgba(0, 0, 0, 0.4);
   }
 
   &.input--error {
@@ -1989,11 +1801,6 @@ select {
 
     &:-ms-input-placeholder {
       @include error-placeholder-text();
-    }
-
-    &::-ms-input-placeholder {
-      @include error-placeholder-text();
-      @include opacity-placeholder-text();
     }
   }
 }
@@ -2038,10 +1845,6 @@ select {
   .btn {
     display: inline-block;
   }
-}
-
-.input--full {
-  width: 100%;
 }
 
 textarea {
@@ -2180,54 +1983,6 @@ a,
 
   .icon {
     fill: currentColor;
-  }
-}
-
-$color-blankstate: lighten($color-body-text, 25%);;
-$color-blankstate-border: rgba($color-body-text, 0.2);
-$color-blankstate-background: lighten($color-body-text, 55%);
-
-.placeholder-svg {
-  fill: $color-blankstate;
-  background-color: $color-blankstate-background;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
-  border: 1px solid $color-blankstate-border;
-}
-
-.placeholder-noblocks {
-  padding: 40px;
-  text-align: center;
-}
-
-// Mimic a background image by wrapping the placeholder svg with this class
-.placeholder-background {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  .placeholder-svg {
-    border: 0;
-  }
-}
-
-// Theme specific styles for some blank state images
-.featured-card__image .placeholder-svg {
-  width: auto;
-}
-
-.hero__slide .placeholder-background {
-  background-color: $color-body;
-}
-
-// Lazysizes loading
-.lazyload {
-  .no-js & {
-    @extend .visually-hidden;
   }
 }
 
@@ -2376,21 +2131,21 @@ $color-blankstate-background: lighten($color-body-text, 55%);
     background-color: $color-giftcard-code-bg;
     height: 40px;
     width: 40px;
-    border: 1px solid $color-giftcard-border;
+    border: 1px solid rgba(0,0,0,0.1);
   }
 
   &:before {
     top: -2px;
     left: -2px;
-    border-radius: $giftcard-image-border-radius 0 100%;
-    box-shadow: 2px 2px 1px $color-giftcard-shadow;
+    border-radius: $giftcard-image-border-radius 0 100% 0;
+    box-shadow: 2px 2px 1px rgba(0,0,0,0.05);
   }
 
   &:after {
     bottom: -2px;
     right: -2px;
-    border-radius: 100% 0 $giftcard-image-border-radius;
-    box-shadow: -2px -2px 1px $color-giftcard-shadow;
+    border-radius: 100% 0 $giftcard-image-border-radius 0;
+    box-shadow: -2px -2px 1px rgba(0,0,0,0.05);
   }
 }
 
@@ -2414,7 +2169,7 @@ $color-blankstate-background: lighten($color-body-text, 55%);
 .giftcard__amount {
   font-size: em(28);
   margin-bottom: 0;
-  text-shadow: 2px 2px 1px $color-giftcard-border;
+  text-shadow: 2px 2px 1px rgba(0,0,0,0.1);
 
   @include media-query($medium-up) {
     font-size: em(40);
@@ -2469,7 +2224,7 @@ $color-blankstate-background: lighten($color-body-text, 55%);
   }
 
   .giftcard__amount-wrapper {
-    background-color: $color-giftcard-code-bg;
+    background-color: #fff;
     border-radius: $giftcard-code-border-radius;
     padding: 0 ($gutter-site / 3);
   }
@@ -2484,8 +2239,6 @@ $color-blankstate-background: lighten($color-body-text, 55%);
     instead of the slick defaults (from slick-theme.scss)
   - This file includes default slick.scss styles (at Slick Slider SCSS)
     and slick-theme.scss (at Slick Slider Theme). Upgrade each area individually
-  - All `outline: none;` have been removed for any elements in slideshow
-    (buttons, arrows, etc) to preserve a11y
 ==============================================================================*/
 $slick-font-family: "slick-icons, sans-serif";
 $slick-arrow-color: $color-hero-arrows;
@@ -2529,6 +2282,10 @@ $slick-opacity-not-active: 0.25;
   display: block;
   margin: 0;
   padding: 0;
+
+  &:focus {
+  outline: none;
+  }
 
   &.dragging {
   cursor: pointer;
@@ -2640,7 +2397,9 @@ $slick-opacity-not-active: 0.25;
   transform: translate(0, -50%);
   padding: 0;
   border: none;
+  outline: none;
   &:hover, &:focus {
+    outline: none;
     background: transparent;
     color: transparent;
     &:before {
@@ -2718,12 +2477,14 @@ $slick-opacity-not-active: 0.25;
       display: block;
       height: 20px;
       width: 20px;
+      outline: none;
       line-height: 0px;
       font-size: 0px;
       color: transparent;
       padding: 5px;
       cursor: pointer;
       &:hover, &:focus {
+        outline: none;
         &:before {
           opacity: $slick-opacity-on-hover;
         }
@@ -2848,7 +2609,7 @@ $slick-opacity-not-active: 0.25;
   width: 10px;
   border-radius: 10px;
 
-  .no-svg & {
+  .supports-no-svg & {
     bottom: auto;
     top: -6px;
     right: -10px;
@@ -2906,11 +2667,6 @@ $slick-opacity-not-active: 0.25;
 
   &:-ms-input-placeholder {
     @include header-placeholder-text();
-  }
-
-  &::-ms-input-placeholder {
-    @include header-placeholder-text();
-    @include opacity-placeholder-text();
   }
 }
 
@@ -2998,7 +2754,7 @@ $slick-opacity-not-active: 0.25;
   @include nav-text-style();
   position: relative;
   color: $color-header-links;
-  color: $color-header-links-rgba;
+  color: rgba($color-header-links, 0.6);
   padding: $gutter-site;
   z-index: $z-index-nav-links;
 
@@ -3060,9 +2816,9 @@ $slick-opacity-not-active: 0.25;
 .customer-login-links a {
   display: inline-block;
   color: $color-header-links;
-  color: $color-header-links-rgba;
+  color: rgba($color-header-links, 0.6);
   padding: $gutter-site ($gutter-site / 2);
-  font-size: $font-size-button;
+  font-size: em({{ settings.type_nav_size }} - 1);
 
   &:hover,
   &:focus {
@@ -3126,7 +2882,7 @@ $slick-opacity-not-active: 0.25;
 }
 
 .meganav__list {
-  padding: $gutter-site 0;
+  padding: $gutter-site 0 $gutter-site;
 }
 
 .meganav__list--has-title {
@@ -3170,7 +2926,6 @@ $slick-opacity-not-active: 0.25;
 
 /*================ Site nav specific styles ================*/
 .site-nav__dropdown {
-  // sass-lint:disable no-color-literals
   box-shadow: rgba(0, 0, 0, 0.1) 0 0 5px;
 }
 
@@ -3209,7 +2964,6 @@ $slick-opacity-not-active: 0.25;
   white-space: nowrap;
   overflow-y: hidden;
   overflow-x: auto;
-  // sass-lint:disable no-misspelled-properties
   -webkit-overflow-scrolling: touch;
 
   .drawer__nav--template-index & {
@@ -3231,6 +2985,8 @@ $slick-opacity-not-active: 0.25;
 }
 
 /*================ Site footer ================*/
+
+// Make sure footer appears to reach bottom of page
 html {
   background-color: $color-footer;
 }
@@ -3238,7 +2994,7 @@ html {
 .site-footer {
   background-color: $color-footer;
   color: $color-footer-text;
-  color: $color-footer-text-rgba;
+  color: rgba($color-footer-text, 0.6);
   padding-top: $gutter-site;
 
   @include media-query($medium-up) {
@@ -3247,7 +3003,7 @@ html {
 
   a {
     color: $color-footer-text;
-    color: $color-footer-text-rgba;
+    color: rgba($color-footer-text, 0.6);
 
     &:hover,
     &:focus {
@@ -3266,29 +3022,19 @@ html {
   }
 }
 
-.flex-footer {
-  @include display-flexbox();
-  @include align-items(flex-start);
-  @include flex-wrap(wrap);
-  margin: 0 (-$grid-gutter / 2);
-
-  .flex__item {
-    @include flex(1 1 100%);
-    padding: 0 ($grid-gutter / 2);
-  }
-
-  @include media-query($medium-up) {
-    .flex__item {
-      @include flex(1 1 20%);
-    }
-  }
-}
-
 .site-footer__section {
   padding-bottom: $gutter-site;
 
   @include media-query($medium-up) {
     padding-bottom: $gutter-site * 2;
+  }
+}
+
+.site-footer__subsection {
+  margin-bottom: $gutter-site;
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -3315,15 +3061,31 @@ html {
 .site-footer__newsletter-label {
   display: block;
   color: $color-footer-text;
-  color: $color-footer-text-rgba;
+  color: rgba($color-footer-text, 0.6);
   font-family: $font-stack-body;
   font-size: inherit;
   font-weight: $font-weight-normal;
   text-transform: inherit;
 }
 
+.site-footer__newsletter-input {
+  color: $color-footer-newsletter-text;
+  background-color: $color-footer-newsletter;
+
+  &::-webkit-input-placeholder {
+    @include footer-placeholder-text();
+  }
+
+  &:-moz-placeholder {
+    @include footer-placeholder-text();
+  }
+
+  &:-ms-input-placeholder {
+    @include footer-placeholder-text();
+  }
+}
+
 /*================ Icons ================*/
-// sass-lint:disable no-mergeable-selectors
 .site-footer {
   .social-icons .icon,
   .payment-icons .icon {
@@ -3333,26 +3095,16 @@ html {
   .social-icons .icon {
     margin-right: 10px;
   }
-
-  .social-icons a {
-    display: block;
-    margin-bottom: 10px;
-  }
-
-  .payment-icons {
-    padding: 5px 0;
-
-    li {
-      padding: 5px 0;
-    }
-  }
 }
-// sass-lint:enable no-mergeable-selectors
+
+.social-icons .icon-google-plus {
+  width: 38px;
+}
 
 /*================ Content blocks ================*/
 .content-block {
   background-color: $color-content;
-  padding: $gutter-site * 2;
+  padding: $gutter-site;
   margin-bottom: $gutter-site;
 
   &:last-child {
@@ -3360,11 +3112,29 @@ html {
   }
 }
 
-.content-block--small {
-  padding: $gutter-site;
+@include media-query($medium-up) {
+  .content-block--large {
+    padding: $gutter-site * 2;
+  }
 }
 
-.content-block--no-bottom-padding {
+// Only intended to be used in a non-variation content-block
+.content-block__no-padding {
+  margin-left: -$gutter-site;
+  margin-right: -$gutter-site;
+  margin-bottom: -$gutter-site;
+}
+
+.content-block__no-padding--border-top {
+  border-top: 1px solid $color-border;
+}
+
+.content-block__title {
+  text-align: center;
+  margin-bottom: $gutter-site;
+}
+
+.content-block--search-results {
   padding-bottom: 0;
 }
 
@@ -3373,9 +3143,9 @@ html {
 }
 
 .content-block__full-image {
-  margin-left: -($gutter-site * 2);
-  margin-right: -($gutter-site * 2);
-  margin-bottom: $gutter-site * 2;
+  margin-left: -$gutter-site;
+  margin-right: -$gutter-site;
+  margin-bottom: $gutter-site;
 
   img {
     display: block;
@@ -3384,7 +3154,20 @@ html {
 
   // If first element in .content-block, get flush with top
   &:first-child {
-    margin-top: -($gutter-site * 2);
+    margin-top: -$gutter-site;
+  }
+}
+
+@include media-query($medium-up) {
+  .content-block__full-image--large {
+    margin-left: -($gutter-site * 2);
+    margin-right: -($gutter-site * 2);
+    margin-bottom: $gutter-site * 2;
+
+    // If first element in .content-block, get flush with top
+    &:first-child {
+      margin-top: -($gutter-site * 2);
+    }
   }
 }
 
@@ -3397,7 +3180,7 @@ html {
   padding: $product-image-padding / 2;
   border-color: $color-body;
   border-style: solid;
-  border-width: 0 0 1px;
+  border-width: 0 0 1px 0;
   color: $color-body-text;
   z-index: $z-index-product-card;
 
@@ -3434,13 +3217,17 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: $color-product-card-overlay;
+  background-color: rgba(0, 0, 0, 0.06);
   transition: $product-card-transition;
 
   .product-card:hover &,
   .product-card:focus & {
     visibility: visible;
     opacity: 1;
+  }
+
+  .supports-touchevents & {
+    display: none;
   }
 }
 
@@ -3454,7 +3241,7 @@ html {
     @include transform(translateY(-85%));
   }
 
-  .no-csstransforms & {
+  .supports-no-csstransforms & {
     top: 35%;
   }
 }
@@ -3472,7 +3259,7 @@ html {
   @include backface(hidden);
   max-height: 100%;
 
-  .no-csstransforms & {
+  .supports-no-csstransforms & {
     top: 0;
   }
 }
@@ -3515,8 +3302,7 @@ html {
 }
 
 .product-card__regular-price {
-  opacity: 1;
-  color: lighten($color-body-text, 5%);
+  opacity: 0.8;
 }
 
 .template-product .page-container {
@@ -3564,12 +3350,10 @@ html {
 }
 
 .product-single__price--compare {
-  color: lighten($color-body-text, 5%);
+  opacity: 0.4;
 }
 
 .product-single__stock {
-  display: inline-block;
-  padding: $gutter-site 0;
   font-size: em(13);
   text-transform: uppercase;
 }
@@ -3578,16 +3362,10 @@ html {
 // Force selects, inputs, and buttons to be the same height,
 // regardless of font-size
 .product-form {
-  @include display-flexbox();
-  @include flex-wrap(wrap);
-  @include align-items(flex-end);
-  margin: 0 -($gutter-site / 4);
-
   .btn {
     padding-top: 12px;
     padding-bottom: 12px;
   }
-
   .btn,
   select,
   input[type="text"] {
@@ -3596,10 +3374,19 @@ html {
 }
 
 .product-form__variants {
-  .no-js & {
+  display: none;
+
+  .supports-no-js & {
     display: block;
     margin-bottom: $gutter-site / 2;
   }
+}
+
+.product-form {
+  @include display-flexbox();
+  @include flex-wrap(wrap);
+  @include align-items(flex-end);
+  margin: 0 -($gutter-site / 4);
 }
 
 .product-form__item {
@@ -3724,7 +3511,7 @@ html {
     max-height: $product-slider-image-height - ($product-slider-padding * 2);
     margin: 0 auto;
 
-    .no-csstransforms & {
+    .supports-no-csstransforms & {
       top: 0;
     }
   }
@@ -3741,7 +3528,7 @@ html {
 }
 
 /*================ Slider arrows ================*/
-.product-single__thumbnails.slick-initialized {
+.product-single__thumbnails {
   .slick-prev,
   .slick-next {
     opacity: 0.2;
@@ -3802,7 +3589,7 @@ html {
   max-width: 95%;
   margin: 0 auto;
 
-  .no-csstransforms & {
+  .supports-no-csstransforms & {
     top: 2.5%;
   }
 }
@@ -3909,18 +3696,12 @@ html {
 ==============================================================================*/
 .hero-wrapper {
   position: relative;
-  margin-top: -($gutter-site * 1.5);
-
-  @include media-query($medium-up) {
-    margin-top: -($gutter-site * 3);
-  }
 }
 
 .hero {
   background-color: adaptive-color($color-header, 10%); // default background color
   height: 330px;
   margin-bottom: -($gutter-site * 1.5);
-  overflow: hidden;
 
   @include media-query($medium-up) {
     height: 600px;
@@ -3932,10 +3713,6 @@ html {
   .slick-list,
   .slick-track {
     height: 100%;
-  }
-
-  .ie9 & {
-    margin-bottom: $gutter-site * 3;
   }
 }
 
@@ -3973,7 +3750,6 @@ html {
 }
 
 /*================ Dots and prev/next pagination ================*/
-// sass-lint:disable no-mergeable-selectors
 .hero {
   .slick-dots {
     margin: 0;
@@ -3989,7 +3765,7 @@ html {
 
       button:before {
         text-indent: -9999px;
-        background-color: $color-fixed-white;
+        background-color: #fff;
         border-radius: 100%;
         border: 2px solid transparent;
         width: 10px;
@@ -4001,7 +3777,7 @@ html {
 
       &.slick-active button:before {
         background-color: transparent;
-        border-color: $color-fixed-white;
+        border-color: #fff;
         opacity: 1;
         width: 12px;
         height: 12px;
@@ -4030,7 +3806,6 @@ html {
     right: 0;
   }
 }
-// sass-lint:enable no-mergeable-selectors
 
 /*================ General slide styles ================*/
 .hero__slide {
@@ -4041,18 +3816,10 @@ html {
   position: relative;
   opacity: 0;
   transition: $hero-image-transition;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  // Used for the IE lazysizes object-fit polyfill
-  font-family: "object-fit: cover";
 
   .slick-initialized &,
-  .no-js & {
+  .supports-no-js & {
     opacity: 1;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top center;
   }
 
   img {
@@ -4064,13 +3831,21 @@ html {
 // z-index stacking issues in oldIE
 .ie9 {
   .hero__slide {
-    // sass-lint:disable no-important
     z-index: 1!important;
   }
 
   .slick-dots {
     z-index: 2;
   }
+}
+
+/*================ Hero images ================*/
+.hero__image {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
 }
 
 /*================ Hero text ================*/
@@ -4091,7 +3866,8 @@ html {
   transition: $hero-text-transition;
   transition-delay: 0.3s;
 
-  .slick-active & {
+  .slick-active &,
+  .supports-no-js & {
     opacity: 1;
     @include transform('translateY(0)');
   }
@@ -4167,7 +3943,7 @@ html {
   color: $color-hero-subtitle-text;
   margin-right: 1px;
 
-  .no-js & {
+  .supports-no-js & {
     display: none;
   }
 }
@@ -4193,7 +3969,6 @@ html {
 
 /*================ Drawer Skeleton Styles ================*/
 .is-transitioning {
-  // sass-lint:disable no-important
   display: block !important;
   visibility: visible !important;
 }
@@ -4221,7 +3996,6 @@ html {
   position: fixed;
   overflow-y: auto;
   overflow-x: hidden;
-  // sass-lint:disable no-misspelled-properties
   -webkit-overflow-scrolling: touch;
   top: 0;
   bottom: 0;
@@ -4229,7 +4003,6 @@ html {
   z-index: $z-index-drawer;
   background-color: $color-drawer;
   transition: $drawer-transition;
-  @include media-query-ie-z-index(3);
 }
 
 .drawer--left {
@@ -4240,7 +4013,7 @@ html {
     display: block;
     @include transform(translateX($drawer-width));
 
-    .no-csstransforms & {
+    .supports-no-csstransforms & {
       left: 0;
     }
   }
@@ -4254,7 +4027,7 @@ html {
     display: block;
     @include transform(translateX(-$drawer-width));
 
-    .no-csstransforms & {
+    .supports-no-csstransforms & {
       right: 0;
     }
   }
@@ -4266,7 +4039,7 @@ html {
   .js-drawer-open-left & {
     @include transform(translateX($drawer-width));
 
-    .no-csstransforms & {
+    .supports-no-csstransforms & {
       left: $drawer-width;
     }
   }
@@ -4274,23 +4047,17 @@ html {
   .js-drawer-open-right & {
     @include transform(translateX(-$drawer-width));
 
-    .no-csstransforms & {
+    .supports-no-csstransforms & {
       left: -$drawer-width;
     }
   }
 }
 
 /*================ Drawer theme styles ================*/
-.page-element {
-  position: relative;
-
-  &.is-transitioning {
-    z-index: $z-index-content;
-  }
-}
-
 .page-container {
+  position: relative;
   background-color: $color-body;
+  z-index: $z-index-content;
 }
 
 .is-moved-by-drawer {
@@ -4301,11 +4068,11 @@ html {
   }
 
   .js-drawer-open-left & {
-    box-shadow: $color-drawer-shadow 0 0 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 0 5px;
   }
 
   .js-drawer-open-right & {
-    box-shadow: $color-drawer-shadow 0 0 -5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 0 -5px;
   }
 }
 
@@ -4343,7 +4110,7 @@ html {
   display: block;
   width: 100%;
   padding-left: $input-padding-left-right;
-  background-color: $color-fixed-white;
+  background-color: #fff;
 
   &[type="search"] {
     padding-right: $gutter-site * 3;
@@ -4544,7 +4311,7 @@ html {
   &:hover,
   &:focus {
     &:after {
-      opacity: 0.6;
+      opacity: 0.5;
     }
   }
 }
@@ -4592,6 +4359,10 @@ html {
     height: 24px;
     fill: currentColor;
   }
+
+  .icon-google-plus {
+    width: 35px;
+  }
 }
 
 @include media-query($small) {
@@ -4619,12 +4390,12 @@ html {
 /*================ Cart ================*/
 .cart-table {
   background-color: $color-content;
-  border: 0;
+  border: none;
   margin-bottom: $gutter-site;
 
   td,
   th {
-    border: 0;
+    border: none;
 
     @include media-query($medium-up) {
       padding: $gutter-site;
@@ -4690,7 +4461,7 @@ html {
 .cart__quantity {
   display: none;
 
-  .no-js & {
+  .supports-no-js & {
     display: block;
   }
 }
@@ -4737,7 +4508,7 @@ html {
 .update-cart {
   display: none;
 
-  .no-js & {
+  .supports-no-js & {
     display: inline-block;
   }
 }
@@ -4745,31 +4516,8 @@ html {
 /*================ Cart discounts ================*/
 .cart-item__original-price,
 .cart-item__discount {
-  // sass-lint:disable no-important
   font-size: 80%!important;
   margin-bottom: 0!important;
-}
-
-/*================ Empty cart ================*/
-.cart--empty-message {
-  .cart--no-cookies & {
-    display: none;
-  }
-}
-
-.cart--continue-message {
-  .cart--no-cookies & {
-    display: none;
-  }
-}
-
-.cart--cookie-message {
-  display: none;
-  padding-bottom: 25px;
-
-  .cart--no-cookies & {
-    display: block;
-  }
 }
 
 /*================ Quantity selector ================*/
@@ -4951,7 +4699,7 @@ body.modal--is-active {
   top: 50%;
   @include transform(translateY(-50%));
 
-  .no-csstransforms {
+  .supports-no-csstransforms {
     top: 20%;
   }
 }
@@ -4985,7 +4733,7 @@ body.modal--is-active {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: $color-product-card-overlay;
+    background-color: rgba(0, 0, 0, 0.06);
     opacity: 0;
     transition: $collection-bard-transition;
     z-index: 1;
@@ -4993,28 +4741,6 @@ body.modal--is-active {
 
   &:hover:before {
     opacity: 1;
-  }
-
-  .no-js & {
-    height: 625px;
-  }
-}
-
-.featured-card--contain {
-  display: flex;
-  flex-wrap: wrap;
-
-  @include media-query($small) {
-    height: 100% !important;
-  }
-}
-
-div.featured-card__image {
-  max-width: 85%;
-  height: 100%;
-
-  @include media-query($small) {
-    height: 350px;
   }
 }
 
@@ -5026,49 +4752,25 @@ div.featured-card__image {
 }
 
 .featured-card__image-wrapper {
-  flex: 0 1 100%;
-
-  @include media-query($small) {
-    height: 100% !important;
-  }
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  height: 62%;
 }
 
 .featured-card__image {
   display: block;
   margin: 0 auto;
-  padding: 40px 25px;
-  max-height: 94%;
-  opacity: 0;
-
-  .no-js & {
-    opacity: 1;
-  }
-
-  @include media-query($small) {
-    max-height: 400px;
-  }
+  max-height: 100%;
 }
 
 .featured-card__header {
+  position: relative;
+  display: inline-block;
   padding: 30px 5% 10px;
-  z-index: 1;
-
-  .featured-card--cover & {
-    position: relative;
-    display: inline-block;
-  }
-
-  .featured-card--contain & {
-    flex: 0 1 100%;
-
-    @include media-query($small) {
-      height: 100% !important;
-    }
-  }
-}
-
-.featured-card__header--background {
   background-color: $color-featured-collection-bg;
+  z-index: 1;
 }
 
 .featured-card__title {
@@ -5086,815 +4788,3 @@ div.featured-card__image {
     color: inherit;
   }
 }
-
-.section-block {
-  position: relative;
-  background-color: $color-content;
-}
-
-.section-block--padding {
-  padding: $gutter-site * 1.5;
-}
-
-.section-block__header {
-  margin-bottom: $gutter-site * 1.5;
-}
-
-.section-block__header--padded {
-  padding-top: $gutter-site * 1.5;
-}
-
-.section-block__title,
-.section-block__subtext {
-  margin-bottom: 0;
-}
-
-/*================ Maps ================*/
-.map-section {
-  position: relative;
-  min-height: 650px;
-  width: 100%;
-  overflow: hidden;
-  @include display-flexbox();
-  @include align-items(center);
-  @include flex-wrap(wrap);
-  @include flex-direction(row);
-
-  @include media-query($medium-up) {
-    min-height: 500px;
-  }
-
-  .section-header {
-    margin-bottom: $gutter-site;
-  }
-
-  .btn {
-    margin-top: $gutter-site / 2;
-  }
-
-  .icon-pin {
-    height: $font-size-button * 1.1;
-    position: relative;
-    top: -1px;
-  }
-
-  .ie9 & {
-    @include media-query($medium-up) {
-      height: 650px;
-    }
-  }
-}
-
-.map-section__full-width {
-  margin: -50px 0;
-}
-
-.map-section__wrapper {
-  height: 100%;
-  flex-shrink: 0;
-  flex-grow: 1;
-  @include flex-basis(100%);
-
-  @include display-flexbox();
-  @include flex-wrap(wrap);
-  @include flex-direction(row);
-}
-
-.map-section__content-wrapper {
-  position: relative;
-  text-align: center;
-  // height: 500px;
-  height: 100%;
-  @include flex-basis(100%);
-
-  @include media-query($medium-up) {
-    @include display-flexbox();
-    @include flex-basis(33%);
-    flex-grow: 0;
-  }
-
-  // Fallback for IE9
-  .ie9 & {
-    top: 10%;
-    @include media-query($medium-up) {
-      width: 33%;
-    }
-  }
-}
-
-.map-section__image {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  top: 0;
-  left: 0;
-  background-size: cover;
-  background-position: center;
-
-  @include media-query($medium-up) {
-    position: absolute;
-  }
-
-  // Only show the background image if map fails to load
-  .map-section--display-map & {
-    display: none !important;
-  }
-
- .map-section--load-error & {
-    display: block !important;
-  }
-}
-
-.flex--third {
-  @include flex(1 1 33%);
-
-  @include media-query($small) {
-    @include flex(0 1 100%);
-  }
-
-  .ie9 & {
-    width: 33%;
-  }
-}
-
-.flex--half {
-  @include flex(1 1 50%);
-
-  @include media-query($small) {
-    @include flex(0 1 100%);
-  }
-
-  .ie9 & {
-    width: 50%;
-  }
-}
-
-.map-section__overlay {
-  width: 100%;
-  min-height: auto;
-  position: relative;
-  display: block;
-  background-color: $color-fixed-white;
-  padding: $gutter-site * 2;
-  text-align: center;
-  z-index: 3;
-  @include display-flexbox();
-  @include align-items(center);
-  @include flex-wrap(wrap);
-  @include align-items(center);
-
-  &:nth-child(2) {
-    @include media-query($medium-up) {
-      border-left: 1px solid $color-blankstate-border;
-    }
-    @include media-query($small) {
-      border-top: 1px solid $color-blankstate-border;
-    }
-  }
-
-  // Make sure every children is on one line
-  & > * {
-    width: 100%;
-  }
-
-  @include media-query($medium-up) {
-    min-height: 320px;
-    margin: $gutter-site * 2 0;
-  }
-}
-
-.map-section__link {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-}
-
-.map-section__text {
-  @include media-query($medium-up) {
-    background-color: $color-blankstate-background;
-    padding: $gutter-site;
-  }
-
-  @include media-query($small) {
-    order: 0;
-    padding: 0 $gutter-site $gutter-site;
-  }
-}
-
-.map-section__text-second-item {
-  @include media-query($medium-up) {
-    border-left: 1px solid $color-blankstate-border;
-  }
-  @include media-query($small) {
-    padding-top: $gutter-site;
-    border-top: 1px solid $color-blankstate-border;
-  }
-}
-
-.map-section__background-wrapper {
-  overflow: hidden;
-  position: relative;
-  @include flex-basis(100%);
-
-  @include media-query($medium-up) {
-  position: static;
-    @include flex-basis(50%);
-    flex-grow: 0;
-  }
-
-  .ie9 & {
-    width: 100%;
-    height: 500px;
-  }
-}
-
-// Optically center map in visible area with
-// extended height/widths and negative margins
-.map-section__container {
-  width: 100%;
-  height: 55vh;
-
-  @include media-query($medium-up) {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    width: 130%;
-    height: 100%;
-    margin: 0 -30% 0 0;
-  }
-}
-
-// Hide Google maps UI
-.gm-style-cc,
-.gm-style-cc + div {
-  visibility: hidden;
-}
-
-/*================ Link block CTA ================*/
-.link-block {
-  position: relative;
-  display: block;
-  @include display-flexbox();
-  justify-content: center;
-  padding: 100px 20px;
-  text-align: center;
-  flex: 1;
-  background: {
-    size: cover;
-    position: top center;
-  }
-
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: $color-fixed-black;
-    opacity: 0.4;
-    transition: opacity 0.2s ease;
-    z-index: 1;
-  }
-
-  &:hover:after,
-  &:hover:focus {
-    opacity: 0.5;
-  }
-}
-
-.link-block__cta {
-  word-break: break-word;
-  z-index: 2;
-}
-
-.link-block-no-js {
-  position: relative;
-  display: block;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  text-align: center;
-  flex: 1;
-}
-/*================ Quote slider ================*/
-.quote-icon {
-  display: block;
-  margin: 0 auto 20px;
-}
-
-// Slick dot overrides
-.quotes-wrapper .slick-dots {
-  position: relative;
-  bottom: 0;
-  margin-top: $gutter-site * 1.5;
-
-  li,
-  button {
-    width: auto;
-    height: auto;
-  }
-
-  button {
-    line-height: 1;
-    font-size: 1em;
-    opacity: 0.6;
-    color: currentColor;
-
-    &:before {
-      display: none;
-    }
-  }
-
-  // Active states
-  .slick-active button {
-    font-weight: $font-weight-bold;
-    opacity: 1;
-  }
-}
-
-// Slick selected outline overrides
-.quotes-wrapper .slick-slide[tabindex="0"] {
-  outline: none;
-}
-
-/*================ Image content section ================*/
-.image-content__image-container {
-  position: relative;
-}
-
-.image-content__image-wrapper {
-  display: block;
-  margin: 0 auto;
-
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-  }
-
-  .no-js & {
-    @extend .visually-hidden;
-  }
-}
-
-.image-content__text {
-  padding: $gutter-site * 2;
-}
-
-/*================ Featured product section ================*/
-.featured-product__text {
-  @include media-query($small) {
-    text-align: center;
-    position: relative;
-    top: -50px;
-    margin-bottom: -50px;
-  }
-}
-
-.featured-product__image {
-  @include media-query($small) {
-    text-align: center;
-  }
-}
-
-/*================ Featured articles ================*/
-.article-block {
-  display: block;
-  text-align: center;
-
-  @include media-query($small) {
-    padding: $gutter-site 0;
-  }
-}
-
-.article-block__image {
-  height: 0;
-  padding-bottom: 75%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center;
-
-  @include media-query($small) {
-    padding-bottom: 50%;
-  }
-}
-
-.article-block__info {
-  padding: 20px 10px;
-}
-
-.article-block__date {
-  display: block;
-  font-size: 0.875em;
-  color: $color-body-text;
-}
-
-.article-block__date,
-.article-block__title {
-  margin-bottom: 5px;
-}
-
-/*================ Featured content ================*/
-.featured-content {
-  position: relative;
-  padding: ($gutter-site * 6) $gutter-site ($gutter-site * 2);
-  background: {
-    size: cover;
-    position: 50% 50%;
-    repeat: no-repeat;
-  }
-
-  @include media-query($medium-up) {
-    padding: $gutter-site * 4;
-  }
-}
-
-/*============================================================================
-  Styles columns.liquid and gallery.liquid
-    - Background images and positioning are handled with theme settings
-==============================================================================*/
-.column-flex {
-  @include media-query($small) {
-    @include flex-direction(column);
-  }
-}
-
-.column-flex__image {
-  position: relative;
-  height: 200px;
-  background: {
-    repeat: no-repeat;
-    size: cover;
-    position: top center;
-  }
-
-  @include media-query($medium-up) {
-    height: 380px;
-  }
-}
-
-.column-flex__image--tall {
-  height: 300px;
-
-  @include media-query($medium-up) {
-    height: 520px;
-  }
-}
-
-.column-flex__content {
-  padding: $gutter-site;
-}
-
-.custom-content {
-  @include display-flexbox;
-  @include align-items(stretch);
-  @include flex-wrap(wrap);
-  width: auto;
-}
-
-/*================ Flex item alignment ================*/
-.align--top-middle {
-  text-align: center;
-}
-
-.align--top-right {
-  text-align: right;
-}
-
-.align--middle-left {
-  @include align-self(center);
-}
-
-.align--center {
-  @include align-self(center);
-  text-align: center;
-}
-
-.align--middle-right {
-  @include align-self(center);
-  text-align: right;
-}
-
-.align--bottom-left {
-  @include align-self(flex-end);
-}
-
-.align--bottom-middle {
-  @include align-self(flex-end);
-  text-align: center;
-}
-
-.align--bottom-right {
-  @include align-self(flex-end);
-  text-align: right;
-}
-
-/*================ Video section ================*/
-
-$video-section-primary-color: #fff;
-$video-section-icon-color: #000;
-$video-section-overlay-background-color: rgba(0, 0, 0, 0.8);
-
-body {
-  &.video-playing {
-    overflow: hidden;
-  }
-}
-.video-section {
-  height: 200px;
-
-  @include media-query($medium-up) {
-    height: 380px;
-  }
-
-  &.video-section--tall {
-    height: 300px;
-
-    @include media-query($medium-up) {
-      height: 520px;
-    }
-  }
-}
-
-.video-section__modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 90%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease-out;
-
-  @include media-query($medium-up) {
-    width: 75%;
-  }
-
-  .video-section--loaded & {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: $z-index-video-overlay + 1;
-  }
-}
-
-.video-section__body-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: $video-section-overlay-background-color;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease-out;
-
-  .video-section--loaded & {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: $z-index-video-overlay;
-  }
-}
-
-.video-section__player,
-.video-section__player iframe {
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
-
-  .video-section--loaded & {
-    z-index: $z-index-video-content;
-    visibility: visible;
-  }
-}
-
-.video-section__player-close {
-  display: none;
-  position: absolute;
-  left: $gutter-site;
-  top: $gutter-site;
-  width: 50px;
-  height: 50px;
-  background-color: $video-section-primary-color;
-  border-radius: 50%;
-  border: 0;
-
-  &:hover {
-    opacity: 0.5;
-  }
-
-  .video-section--loaded & {
-    z-index: $z-index-video-content + 1;
-  }
-
-  .icon {
-    fill: $video-section-icon-color;
-    width: 25px;
-    height: 25px;
-  }
-
-  @include media-query($small) {
-    top: $gutter-site / 2;
-    left: $gutter-site / 2;
-  }
-}
-
-.video-section__cover {
-  position: relative;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 1;
-  overflow: hidden;
-  transition: all 0.25s ease-out;
-  z-index: 2; // Fix for browser that don't support pointer-events
-}
-
-.video-section__cover-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  opacity: 1;
-  transition: opacity 0.25s ease-out;
-}
-
-.video-section__cover-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.video-section__cover-content {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  padding: 0 13px;
-  text-align: center;
-  opacity: 1;
-  transition: opacity 0.25s ease-out;
-  @include transform(translateY(-50%));
-}
-
-.video-section__load-player-button {
-  border: 0;
-  line-height: 1;
-  padding: ($gutter-site / 2);
-  background-color: $color-btn-primary;
-  text-transform: uppercase;
-  transition: all 0.25s ease;
-  @include prefix(box-decoration-break, clone, webkit o spec);
-
-  &:hover {
-    background-color: $color-btn-primary-hover;
-  }
-
-  &.video-section__load-player-button--large {
-    padding: 0;
-    background: none;
-  }
-}
-
-.video-section__error {
-  display: none;
-  position: absolute;
-  bottom: -40px;
-  width: 50vw;
-  min-width: 340px;
-  left: 50%;
-  color: $video-section-primary-color;
-  @include transform(translateX(-50%));
-
-  .video-section--error & {
-    display: block;
-  }
-}
-
-.video-section__load-player-text {
-  margin-left: ($gutter-site / 2);
-  display: inline-block;
-  letter-spacing: 0;
-  font-size: em(26);
-  line-height: 1.2;
-  color: $color-btn-primary-text;
-  @include prefix(box-decoration-break, clone, webkit o spec);
-
-  @include media-query($large-up) {
-    font-size: em(32);
-  }
-}
-.video-section__load-player-icon {
-  position: relative;
-  top: 2px;
-  margin: 0 auto;
-  height: 20px;
-  width: 20px;
-  padding: 0;
-  display: inline-block;
-  transition: all 0.5s ease;
-
-  @include media-query($medium-up) {
-    top: 0;
-  }
-
-  .video-section__load-player-button--large & {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-.video-section__load-player-button-triangle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-top: 5px solid transparent;
-  border-left: 7px solid $color-btn-primary;
-  border-bottom: 5px solid transparent;
-  @include transform(translate(-34%, -50%));
-
-  .video-section__load-player-button--large & {
-    border-top: 15px solid transparent;
-    border-left: 23px solid $color-btn-primary-text;
-    border-bottom: 15px solid transparent;
-  }
-}
-
-.video-section__load-player-button-circle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: $color-btn-primary-text;
-  height: 20px;
-  width: 20px;
-  -moz-border-radius: 75px;
-  -webkit-border-radius: 75px;
-  border-top-right-radius: 75px; //Expanded border radius for IE9 & 10
-  border-top-left-radius: 75px;
-  border-bottom-right-radius: 75px;
-  border-bottom-left-radius: 75px;
-  transition: all 0.25s ease-out;
-
-  .video-section__load-player-button--large & {
-    background-color: $color-btn-primary;
-    width: 60px;
-    height: 60px;
-  }
-  .video-section__load-player-button--large:hover &,
-  .video-section__load-player-button--large:focus & {
-    background-color: $color-btn-primary-hover;
-  }
-}
-
-/*================ Blog ================*/
-.article__photo-container {
-  position: relative;
-}
-
-.article__photo-wrapper {
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-  }
-
-  .no-js & {
-    @extend .visually-hidden;
-  }
-}
-/*================ Rich text section ================*/
-.rich-text__heading--large {
-  font-size: 2.25em;
-}
-.rich-text__heading--small {
-  font-size: 1.5em;
-}
-
-.rich-text__text--large {
-  font-size: em(floor($font-size-base * 1.15));
-}
-.rich-text__text--small {
-  font-size: em(floor($font-size-base * 0.9));
-}
-

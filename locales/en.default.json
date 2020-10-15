@@ -14,23 +14,27 @@
       "404_link": "Continue shopping"
     },
     "password_page": {
+      "opening_soon": "Opening Soon",
+      "spread_the_word": "Spread the word",
       "login_form_heading": "Enter store using password",
       "login_form_password_label": "Password",
       "login_form_password_placeholder": "Your password",
       "login_form_submit": "Enter",
+      "signup_form_heading": "Find out when we open",
       "signup_form_email_label": "Email",
+      "signup_form_email_placeholder": "Your email",
+      "signup_form_submit": "Submit",
       "signup_form_success": "We will send you an email right before we open!",
       "admin_link_html": "Are you the store owner? <a href=\"\/admin\" class=\"text-link\">Log in here<\/a>",
       "password_link": "Enter using password",
       "powered_by_shopify_html": "This shop will be powered by {{ shopify }}"
     },
     "social": {
-      "share_title": "Share",
-      "alt_text": {
-        "share_on_facebook": "Share on Facebook",
-        "share_on_twitter": "Tweet on Twitter",
-        "share_on_pinterest": "Pin on Pinterest"
-      }
+      "share_on_facebook": "Share",
+      "share_on_twitter": "Tweet",
+      "share_on_pinterest": "Pin it",
+      "share_on_fancy": "Fancy",
+      "share_title": "Share"
     },
     "newsletter_form": {
       "newsletter_heading": "Be in the know",
@@ -61,7 +65,6 @@
   "blogs": {
     "article": {
       "tags": "Tags",
-      "view_all": "Read all",
       "all_tags": "All",
       "read_more": "Read more",
       "back_to_blog": "Back to {{ title }}"
@@ -84,13 +87,11 @@
   "cart": {
     "general": {
       "title": "Shopping Cart",
-      "remove": "Remove",
       "note": "Special instructions for seller",
       "shipping_at_checkout": "Shipping & taxes calculated at checkout",
       "update": "Update Cart",
       "checkout": "Check Out",
       "empty": "Your cart is currently empty.",
-      "cookies_required": "Enable cookies to use the shopping cart",
       "continue_browsing": "Continue browsing",
       "close_notification": "Close",
       "savings_html": "You're saving {{ price }}"
@@ -98,22 +99,27 @@
     "label": {
       "product": "Product",
       "quantity": "Quantity",
-      "decrease_quantity": "Reduce item quantity by one",
-      "increase_quantity": "Increase item quantity by one",
+      "increase_quantity": "Increase quantity",
+      "decrease_quantity": "Decrease quantity",
       "total": "Total"
     }
   },
   "collections": {
     "general": {
       "view_all": "View all",
-      "all_of_collection": "All",
+      "all_of_collection": "All {{ collection }}",
       "no_matches": "Sorry, there are no products in this collection",
       "link_title": "Browse our {{ title }} collection"
+    },
+    "onboarding": {
+      "modal_title": "This page will show all of your store's products",
+      "no_products_html": "There are no products yet, but once you begin adding them they will show up here regardless if they are in a collection.",
+      "add_product": "Add Product"
     },
     "sorting": {
       "title": "Sort by",
       "title_tags": "Filter by",
-      "all_of_collection": "All",
+      "all_of_collection": "All {{ collection }}",
       "featured": "Featured",
       "best_selling": "Best Selling",
       "az": "Alphabetically, A-Z",
@@ -178,6 +184,7 @@
       "password": "Password",
       "forgot_password": "Forgot your password?",
       "sign_in": "Sign In",
+      "cancel": "Return to Store",
       "guest_title": "Continue as a guest",
       "guest_continue": "Continue"
     },
@@ -208,8 +215,7 @@
       "quantity": "Quantity",
       "total": "Total",
       "fulfilled_at": "Fulfilled {{ date }}",
-      "subtotal": "Subtotal",
-      "track_shipment": "Track shipment"
+      "subtotal": "Subtotal"
     },
     "recover_password": {
       "title": "Reset your password",
@@ -232,7 +238,8 @@
       "last_name": "Last Name",
       "email": "Email",
       "password": "Password",
-      "submit": "Create"
+      "submit": "Create",
+      "cancel": "Return to Store"
     }
   },
   "homepage": {
@@ -243,10 +250,12 @@
       "play_slideshow": "Play slideshow"
     },
     "onboarding": {
-      "blog_title": "Your post's title",
+      "modal_title": "Almost there...",
+      "no_featured_products_html": "Create or select your <a href=\"\/admin\/collections\">collections<\/a> in the theme settings to showcase featured products here.",
       "product_title": "Example Product Title",
-      "collection_title": "Collection title",
-      "no_content": "This section doesn’t currently include any content. Add content to this section using the sidebar."
+      "no_collections_html": "Set up to six featured collections in theme settings to feature them here. <a href=\"\/admin\/collections\">Add some collections<\/a> to go along with the default Frontpage.",
+      "add_collection": "Add a Collection",
+      "collection_title": "Example Title"
     }
   },
   "layout": {
@@ -258,16 +267,21 @@
       "log_out": "Log out",
       "create_account": "Create account"
     },
+    "recommendations": {
+      "you_might_also_like": "YOU MIGHT ALSO LIKE"
+    },
     "sidebar": {
       "featured_products": "Featured Products"
     },
     "footer": {
-      "social_platform": "{{ name }} on {{ platform }}"
+      "social_platform": "{{ name }} on {{ platform }}",
+      "footer_line": "CVR: 32220649 | Ulleruphusevej 12, 7900 Nykøbing Mors  | Tlf.: 60608617 | "
     }
   },
   "products": {
     "product": {
       "sold_out": "Sold Out",
+      "made_to_order": "Made-to-order, allow up to 10 days for shipping",
       "unavailable": "Unavailable",
       "will_not_ship_until": "Will not ship until {{ date }}",
       "will_be_in_stock_after": "Will be in stock after {{ date }}",
@@ -279,10 +293,7 @@
       "quantity": "Quantity",
       "add_to_cart": "Add to Cart",
       "view": "View",
-      "stock_available": {
-        "one": "{{ count }} available",
-        "other": "{{ count }} available"
-      },
+      "stock_available": "{{ count }} available",
       "collection_return": "Back to {{ collection }}",
       "product_added_to_cart_html": "Item added to cart. <span>View cart and check out<\/span>.",
       "stock_unavailable": "The item could not be added to your cart because there are not enough in stock."
@@ -305,17 +316,9 @@
   "date_formats": {
     "month_day_year": "%B %d, %Y"
   },
-  "sections": {
-    "map": {
-      "get_directions": "Get directions",
-      "address_error": "Error looking up that address",
-      "address_no_results": "No results for that address",
-      "address_query_limit_html": "You have exceeded the Google API usage limit. Consider upgrading to a <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Premium Plan<\/a>.",
-      "auth_error_html": "There was a problem authenticating your Google Maps API Key."
+  "shopify": {
+    "links": {
+      "powered_by_shopify": ""
     }
-  },
-  "video": {
-    "play": "Play video",
-    "close": "Stop video"
   }
 }
